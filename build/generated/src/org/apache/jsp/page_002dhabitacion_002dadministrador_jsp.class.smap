@@ -1,0 +1,29 @@
+SMAP
+page_002dhabitacion_002dadministrador_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-habitacion-administrador.jsp
+page-habitacion-administrador.jsp
++ 1 header.html
+header.html
++ 2 navegacion-administrador.html
+navegacion-administrador.html
+*L
+5,12:60
+1#1,8:72
+16#0,5:79
+1#2,10:84
+20#0,59:93
+79:152,3
+80:155
+80:157,11
+81:168
+82,6:169,3
+88,2:187
+90:189,3
+91,4:192
+95:196,3
+96,6:199
+101,7:221
+*E
