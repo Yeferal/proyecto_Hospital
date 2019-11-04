@@ -12,12 +12,14 @@ public final class page_002dhabitacion_002dadministrador_jsp extends org.apache.
   private static java.util.List<String> _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList<String>(2);
+    _jspx_dependants = new java.util.ArrayList<String>(3);
     _jspx_dependants.add("/header.html");
     _jspx_dependants.add("/navegacion-administrador.html");
+    _jspx_dependants.add("/modal-nueva-habitacion.html");
   }
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_set_var_value_nobody;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -27,10 +29,12 @@ public final class page_002dhabitacion_002dadministrador_jsp extends org.apache.
 
   public void _jspInit() {
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_set_var_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_c_set_var_value_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -85,7 +89,7 @@ public final class page_002dhabitacion_002dadministrador_jsp extends org.apache.
       out.write("    <ul class=\"menu2\">\n");
       out.write("        <li><a href=\"HomeArea\">Areas</a></li>\n");
       out.write("        <li><a href=\"HabitacionAdmin\">Habitacion</a></li>\n");
-      out.write("        <li><a href=\"\">Empleados</a></li> \n");
+      out.write("        <li><a href=\"EmpleadoAdmin\">Empleados</a></li> \n");
       out.write("        <li><a href=\"\" target=\"_Blank\">Reportes</a></li>  \n");
       out.write("        <li><a href=\"CloseSesion\" >Cerrar Sesion</a></li>       \n");
       out.write("    </ul>\n");
@@ -97,7 +101,9 @@ public final class page_002dhabitacion_002dadministrador_jsp extends org.apache.
       out.write("                          Agregar Nueva Habitacion\n");
       out.write("                        </button>\n");
       out.write("\n");
-      out.write("                        <!-- Modal -->\n");
+      out.write("                        \n");
+      out.write("            ");
+      out.write("<!-- Modal -->\n");
       out.write("                        <div class=\"modal fade\" id=\"exampleModaln\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n");
       out.write("                          <div class=\"modal-dialog\" role=\"document\">\n");
       out.write("                            <div class=\"modal-content\">\n");
@@ -134,8 +140,74 @@ public final class page_002dhabitacion_002dadministrador_jsp extends org.apache.
       out.write("                            </div>\n");
       out.write("                          </div>\n");
       out.write("                        </div>\n");
+      out.write("\n");
       out.write("            \n");
       out.write("        </div>\n");
+      out.write("        <!--        este es el modal para Modificar el area seleccionado-->\n");
+      out.write("            ");
+      if (_jspx_meth_c_set_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("            <div class=\"modal fade\" id=\"exampleModalmodificar\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n");
+      out.write("                          <div class=\"modal-dialog\" role=\"document\">\n");
+      out.write("                            <div class=\"modal-content\">\n");
+      out.write("                              <div class=\"modal-header\">\n");
+      out.write("                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>\n");
+      out.write("                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n");
+      out.write("                                  <span aria-hidden=\"true\">&times;</span>\n");
+      out.write("                                </button>\n");
+      out.write("                              </div>\n");
+      out.write("                              <div class=\"modal-body\">\n");
+      out.write("                                <form action=\"AreaAdmin?tip=3&&id=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${modificararea.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" method=\"POST\">\n");
+      out.write("                                <input type=\"text\" name=\"nombreArea\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${modificararea.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" required>\n");
+      out.write("                                  <input type=\"submit\" value=\"Modificar\">\n");
+      out.write("                                </form>\n");
+      out.write("                              </div>\n");
+      out.write("                              <div class=\"modal-footer\">\n");
+      out.write("                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n");
+      out.write("                                \n");
+      out.write("                              </div>\n");
+      out.write("                            </div>\n");
+      out.write("                          </div>\n");
+      out.write("                        </div>\n");
+      out.write("        \n");
+      out.write("<!--        este es el modal para eliminar el area seleccionado-->\n");
+      out.write("            ");
+      if (_jspx_meth_c_set_1(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("            <div class=\"modal fade\" id=\"exampleModaleliminar\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n");
+      out.write("                          <div class=\"modal-dialog\" role=\"document\">\n");
+      out.write("                            <div class=\"modal-content\">\n");
+      out.write("                              <div class=\"modal-header\">\n");
+      out.write("                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">Eliminar Area</h5>\n");
+      out.write("                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n");
+      out.write("                                  <span aria-hidden=\"true\">&times;</span>\n");
+      out.write("                                </button>\n");
+      out.write("                              </div>\n");
+      out.write("                              <div class=\"modal-body\">\n");
+      out.write("                                Desea eliminar a  <STRONG>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${infor.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\n");
+      out.write("                              </div>\n");
+      out.write("                              \n");
+      out.write("                              <form action=\"AreaAdmin?tip=2&&id=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${infor.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" method=\"POST\">\n");
+      out.write("                                  <input type=\"submit\" value=\"Eliminar\">\n");
+      out.write("                              </form>\n");
+      out.write("                              \n");
+      out.write("                              <div class=\"modal-footer\">\n");
+      out.write("                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancelar</button>\n");
+      out.write("                                \n");
+      out.write("                              </div>\n");
+      out.write("                            </div>\n");
+      out.write("                          </div>\n");
+      out.write("            </div>\n");
       out.write("        \n");
       out.write("        <table border=\"1\" cellpadding=\"1\">\n");
       out.write("            <thead>\n");
@@ -145,7 +217,8 @@ public final class page_002dhabitacion_002dadministrador_jsp extends org.apache.
       out.write("                    <th>Estado</th>\n");
       out.write("                    <th>Costo</th>\n");
       out.write("                    <th>Cuota</th>\n");
-      out.write("                    <th>Opciones</th>\n");
+      out.write("                    <th>Eliminar</th>\n");
+      out.write("                    <th>Modificar</th>\n");
       out.write("                </tr>\n");
       out.write("            </thead>\n");
       out.write("            <tbody>\n");
@@ -189,14 +262,16 @@ ids++;
             out.write("                            <form action=\"#?tip=1&&id=");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dato.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
             out.write("\" method=\"POST\">\n");
-            out.write("                            <input type=\"submit\" value=\"Modificar\">\n");
+            out.write("                            <input type=\"submit\" value=\"Eliminar\">\n");
             out.write("                        </form>\n");
             out.write("                        </div>\n");
+            out.write("                        </td>    \n");
+            out.write("                    <td>\n");
             out.write("                            <div>\n");
             out.write("                                <form action=\"#?tip=2&&id=");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dato.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
             out.write("\" method=\"POST\">\n");
-            out.write("                            <input type=\"submit\" value=\"Eliminar\">\n");
+            out.write("                            <input type=\"submit\" value=\"Modificar\">\n");
             out.write("                        </form>\n");
             out.write("                            </div>\n");
             out.write("                    </td>\n");
@@ -235,5 +310,43 @@ ids++;
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_set_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_0 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_set_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_set_0.setParent(null);
+    _jspx_th_c_set_0.setVar("modificararea");
+    _jspx_th_c_set_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${objetoarea}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_set_0 = _jspx_th_c_set_0.doStartTag();
+    if (_jspx_th_c_set_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_0);
+      return true;
+    }
+    _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_set_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_1 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_set_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_set_1.setParent(null);
+    _jspx_th_c_set_1.setVar("infor");
+    _jspx_th_c_set_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${objeto}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_set_1 = _jspx_th_c_set_1.doStartTag();
+    if (_jspx_th_c_set_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_1);
+      return true;
+    }
+    _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_1);
+    return false;
   }
 }

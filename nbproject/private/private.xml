@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/mycompany/hospital/Habitacion.java</file>
             <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/page-empleados-administracion.jsp</file>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/page-habitacion-administrador.jsp</file>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/page-home-administrador.jsp</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/administrador/RegistroContrato.java</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/servlet/administrador/EmpleadoAdmin.java</file>
         </group>
     </open-files>
 </project-private>

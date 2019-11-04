@@ -18,9 +18,9 @@
         
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaln">
                           Agregar Nuevo Area
-                        </button>
+            </button>
 
-                        <!-- Modal -->
+                        <!-- Modal nuevo area-->
                         <div class="modal fade" id="exampleModaln" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -48,9 +48,9 @@
                         </div>
         
         
-        
-        <c:if test="${requestScope['modal1'] == 1}">
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!--        este es el modal para Modificar el area seleccionado-->
+            <c:set var="modificararea" value="${objetoarea}"></c:set>
+            <div class="modal fade" id="exampleModalmodificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -60,20 +60,22 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                HOla desea eliminar a ${dato.getNombre()}
+                                <form action="AreaAdmin?tip=3&&id=${modificararea.getId()}" method="POST">
+                                <input type="text" name="nombreArea" value="${modificararea.getNombre()}" required>
+                                  <input type="submit" value="Modificar">
+                                </form>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                
                               </div>
                             </div>
                           </div>
                         </div>
-        </c:if>
         
-        <c:if test="${requestScope['modal2'] == 1}">
+<!--        este es el modal para eliminar el area seleccionado-->
             <c:set var="infor" value="${objeto}"></c:set>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModaleliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -83,23 +85,28 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                Desea eliminar a ${infor.getNombre()}
+                                  Desea eliminar a  <B>${infor.getNombre()}</b>
                               </div>
+                              
+                              <form action="AreaAdmin?tip=2&&id=${infor.getId()}" method="POST">
+                                  <input type="submit" value="Eliminar">
+                              </form>
+                              
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 
                               </div>
                             </div>
                           </div>
-                        </div>
-        </c:if>
+            </div>
         
         <table border="1" cellpadding="1">
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>Area</th>
-                    <th>Opciones</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                 </tr>
             </thead>
             <tbody>
@@ -110,31 +117,32 @@
                     <td><%=ids%></td>
                     <td>${dato.getNombre()}</td>
                     <td>
-                        <!-- Button trigger modal -->
-<!--                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                          Launch demo modal
-                        </button>-->
-
-                        <!-- Modal -->
                         <form action="AreaAdmin?tip=5&&nombres=${dato.getNombre()}&&id=${dato.getId()}" method="POST">
                             <input type="submit" value="Eliminar">
                         </form>
-                        
-                        
-                        
-<!--                        <div>
-                            <form action="AreaAdmin?tip=1&&id=${dato.getId()}" method="POST">
+                    </td>
+                    <td>
+                        <form action="AreaAdmin?tip=1&&nombres=${dato.getNombre()}&&id=${dato.getId()}" method="POST">
                             <input type="submit" value="Modificar">
                         </form>
-                        </div>
-                            <div>
-                                <form action="AreaAdmin?tip=2&&id=${dato.getId()}" method="POST">
-                            <input type="submit" value="Eliminar">
-                        </form>
-                            </div>-->
                     </td>
                 </tr>
                 </c:forEach>
+                
+                <c:if test="${requestScope['activo1'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModaleliminar').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo2'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalmodificar').modal('show');
+                            });
+                    </script>
+                </c:if>
             </tbody>
         </table>
 

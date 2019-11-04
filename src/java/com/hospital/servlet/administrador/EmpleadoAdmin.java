@@ -5,10 +5,12 @@
  */
 package com.hospital.servlet.administrador;
 
+import com.hospital.administrador.ListaAdministracion;
 import com.hospital.administrador.RegistroContrato;
 import com.mycompany.hospital.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,7 @@ public class EmpleadoAdmin extends HttpServlet {
 
     RegistroContrato registro = new RegistroContrato();
     Usuario usuario = new Usuario();
+    ListaAdministracion lista = new ListaAdministracion();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,7 +37,9 @@ public class EmpleadoAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        request.setAttribute("datos", lista.listarEmpleadosAdministracion());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("page-empleados-administracion.jsp");
+        dispatcher.forward(request, response);
         
     }
 

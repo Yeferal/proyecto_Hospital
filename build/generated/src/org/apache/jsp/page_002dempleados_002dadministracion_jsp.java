@@ -12,9 +12,10 @@ public final class page_002dempleados_002dadministracion_jsp extends org.apache.
   private static java.util.List<String> _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList<String>(2);
+    _jspx_dependants = new java.util.ArrayList<String>(3);
     _jspx_dependants.add("/header.html");
     _jspx_dependants.add("/navegacion-administrador.html");
+    _jspx_dependants.add("/modal-contratar-administracion.html");
   }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -74,7 +75,7 @@ public final class page_002dempleados_002dadministracion_jsp extends org.apache.
       out.write("    <ul class=\"menu2\">\n");
       out.write("        <li><a href=\"HomeArea\">Areas</a></li>\n");
       out.write("        <li><a href=\"HabitacionAdmin\">Habitacion</a></li>\n");
-      out.write("        <li><a href=\"\">Empleados</a></li> \n");
+      out.write("        <li><a href=\"EmpleadoAdmin\">Empleados</a></li> \n");
       out.write("        <li><a href=\"\" target=\"_Blank\">Reportes</a></li>  \n");
       out.write("        <li><a href=\"CloseSesion\" >Cerrar Sesion</a></li>       \n");
       out.write("    </ul>\n");
@@ -98,8 +99,9 @@ public final class page_002dempleados_002dadministracion_jsp extends org.apache.
       out.write("                    <input type=\"submit\" value=\"Aumento Salarial\" class=\"btn btn-primary\">\n");
       out.write("                </form>\n");
       out.write("\n");
-      out.write("    </div>\n");
-      out.write("                        <!-- Modal -->\n");
+      out.write("        </div\n");
+      out.write("        ");
+      out.write("<!-- Modal -->\n");
       out.write("                        <div class=\"modal fade\" id=\"exampleModaln\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n");
       out.write("                          <div class=\"modal-dialog\" role=\"document\">\n");
       out.write("                            <div class=\"modal-content\">\n");
@@ -155,6 +157,8 @@ public final class page_002dempleados_002dadministracion_jsp extends org.apache.
       out.write("                            </div>\n");
       out.write("                          </div>\n");
       out.write("                        </div>\n");
+      out.write("\n");
+      out.write("                        \n");
       out.write("            \n");
       out.write("        </div>\n");
       out.write("    </body>\n");

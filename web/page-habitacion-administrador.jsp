@@ -24,35 +24,37 @@
                           Agregar Nueva Habitacion
                         </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModaln" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        
+            <%@include file="modal-nueva-habitacion.html" %>
+            
+        </div>
+            
+        <!--        este es el modal para Modificar el area seleccionado-->
+            <c:set var="modificararea" value="${objetohabitacion}"></c:set>
+            <div class="modal fade" id="exampleModalmodificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Habitacion</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
                               <div class="modal-body">
-                                  
-                                <form action="HabitacionAdmin?tip=1" method="POST">
-                                <div class="form-group">
+                                <form action="?tip=3&&id=${objetohabitacion.getId()}" method="POST">
+                                
                                     <label for="recipient-name" class="col-form-label">Estado de la Habitacion:</label>
                                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="estadoH" required>
-                                        <option selected></option>
+                                        <option selected="${objetohabitacion.getEstado()}">${objetohabitacion.getEstadoTexto()}</option>
                                         <option value="0">Inhabilitado</option>
                                         <option value="1">Habilitado</option>
                                       </select><br>
                                     <label for="recipient-name" class="col-form-label" >Costo:</label>
-                                    <input type="number" step="0.01" name="costo" required/><br>
+                                    <input type="number" step="0.01" name="costo" value="${objetohabitacion.getCosto()}" required/><br>
                                     <label for="recipient-name" class="col-form-label">Cuota:</label>
-                                    <input type="number" step="0.01" name="cuota" required/><br>
-                                    
-                                    <input type="submit" value="Agregar">
-                                    </div>
-                                    
-                              </form>
+                                    <input type="number" step="0.01" name="cuota" value="${objetohabitacion.getCuota()}" required/><br>
+                                  <input type="submit" value="Modificar">
+                                </form>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -61,8 +63,33 @@
                             </div>
                           </div>
                         </div>
-            
-        </div>
+        
+<!--        este es el modal para eliminar el area seleccionado-->
+            <c:set var="infor" value="${objetohabitacion}"></c:set>
+            <div class="modal fade" id="exampleModaleliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Eliminar Area</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Desea eliminar a No. <B>${objetohabitacion.getId()}</b>
+                              </div>
+                              
+                              <form action="?tip=3&&id=${objetohabitacion.getId()}" method="POST">
+                                  <input type="submit" value="Eliminar">
+                              </form>
+                              
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+            </div>
         
         <table border="1" cellpadding="1">
             <thead>
@@ -72,7 +99,8 @@
                     <th>Estado</th>
                     <th>Costo</th>
                     <th>Cuota</th>
-                    <th>Opciones</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                 </tr>
             </thead>
             <tbody>
@@ -87,13 +115,15 @@
                     <td>${dato.getCuota()}</td>
                     <td>
                         <div>
-                            <form action="#?tip=1&&id=${dato.getId()}" method="POST">
-                            <input type="submit" value="Modificar">
+                            <form action="HabitacionAdmin?tip=2&&id=${dato.getId()}" method="POST">
+                            <input type="submit" value="Eliminar">
                         </form>
                         </div>
+                        </td>    
+                    <td>
                             <div>
-                                <form action="#?tip=2&&id=${dato.getId()}" method="POST">
-                            <input type="submit" value="Eliminar">
+                                <form action="#?tip=4&&id=${dato.getId()}" method="POST">
+                            <input type="submit" value="Modificar">
                         </form>
                             </div>
                     </td>
@@ -101,6 +131,22 @@
                 </c:forEach>
             </tbody>
         </table>
+                
+                <c:if test="${requestScope['activo1'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModaleliminar').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo2'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalmodificar').modal('show');
+                            });
+                    </script>
+                </c:if>
+                    
                             
     </body>
 </html>

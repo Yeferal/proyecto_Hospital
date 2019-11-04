@@ -56,7 +56,7 @@ public class Habitacion {
     
     public String getEstadoTexto(){
         if(estado==0){
-            estadoTexto="Inhablitado";
+            estadoTexto="Inhabilitado";
             return estadoTexto;
         }else{
             estadoTexto = "Habilitado";

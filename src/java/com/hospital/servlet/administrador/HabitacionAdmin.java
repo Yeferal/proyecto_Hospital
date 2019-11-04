@@ -61,10 +61,30 @@ public class HabitacionAdmin extends HttpServlet {
            //verificarExistencia(request, response);
             
         }else if(tipo==1){
-            System.out.println("Entro en tipo 1");
+            
             enviarRegistro(request, response);
              
         }else if(tipo==2){
+
+            h.setId(Integer.parseInt(request.getParameter("id")));
+
+            request.setAttribute("objetohabitacion", h);
+            request.setAttribute("activo1", 1);
+            request.setAttribute("datos", lista.listarHabitaciones() );
+            RequestDispatcher dispatcher = request.getRequestDispatcher("page-habitacion-administrador.jsp");
+            dispatcher.forward(request, response);
+            
+            
+        }else if(tipo==3){
+            enviarHabitacionEliminar(request, response);
+        }
+        else if(tipo==4){
+            
+        }
+        else if(tipo==5){
+            
+        }
+        else if(tipo==6){
             
         }
     }
@@ -81,6 +101,21 @@ public class HabitacionAdmin extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-habitacion-administrador.jsp");
         dispatcher.forward(request, response);
         
+    }
+    
+    private void enviarHabitacionEliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        if(adminHabitacion.verificarExistenciaPaciente(id)){
+            adminHabitacion.eliminarHabitacion(id);
+            ServletOutputStream stream1 = response.getOutputStream();
+             stream1.print("<html><head></head><body onload=\"alert('Se Elimino la Habitacion'); window.location='HabitacionAdmin' \"></body></html>");
+             stream1.close();
+        }else{
+            ServletOutputStream stream1 = response.getOutputStream();
+             stream1.print("<html><head></head><body onload=\"alert('Esta habitacion no puede ser eliminada ya que esta en uso'); window.location='' \"></body></html>");
+             stream1.close();
+        }
     }
 
 }

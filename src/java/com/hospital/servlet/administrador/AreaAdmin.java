@@ -64,16 +64,22 @@ public class AreaAdmin extends HttpServlet {
              stream1.close();
              
         }else if(tipo==1){
-            
-        }else if(tipo==3){
-            
-        }else if(tipo==5){
-            System.out.println("Entro en tipo 5");
-            request.setAttribute("modal2", 1);
             Area area = new Area();
             area.setNombre(request.getParameter("nombres"));
             area.setId(Integer.parseInt(request.getParameter("id")));
-            request.setAttribute("infor", area);
+            request.setAttribute("objetoarea", area);
+            request.setAttribute("activo2", 1);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("HomeArea");
+            dispatcher.forward(request, response);
+            
+        }else if(tipo==3){
+            enviarModificacion(request, response);
+        }else if(tipo==5){           
+            Area area = new Area();
+            area.setNombre(request.getParameter("nombres"));
+            area.setId(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("objeto", area);
+            request.setAttribute("activo1", 1);
             RequestDispatcher dispatcher = request.getRequestDispatcher("HomeArea");
             dispatcher.forward(request, response);
             
@@ -91,6 +97,21 @@ public class AreaAdmin extends HttpServlet {
         }else{
             ServletOutputStream stream1 = response.getOutputStream();
              stream1.print("<html><head></head><body onload=\"alert('El area ya existe'); window.location='HomeArea' \"></body></html>");
+             stream1.close();
+        }
+    }
+    
+    private void enviarModificacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        if(!admArea.verificarExistencia(request.getParameter("nombreArea"))){
+            String nombreArea = request.getParameter("nombreArea");
+            
+            admArea.modificarArea(Integer.parseInt(request.getParameter("id")),nombreArea);
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("HomeArea");
+            dispatcher.forward(request, response);
+        }else{
+            ServletOutputStream stream1 = response.getOutputStream();
+             stream1.print("<html><head></head><body onload=\"alert('Ya existe un area con ese Nombre'); window.location='HomeArea' \"></body></html>");
              stream1.close();
         }
     }

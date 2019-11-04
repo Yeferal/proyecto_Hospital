@@ -72,4 +72,39 @@ public class ListaAdministracion extends Conexion{
        
         return lista;
     }
+    
+    
+    public List listarEmpleadosAdministracion(){
+            List<Usuario> lista = new ArrayList<>();
+        Usuario usuario = null;
+        conectar();
+        
+        
+        try {
+            
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"tipo='Administrador' OR tipo='Recursos Humanos' OR tipo='Gerente';");
+            
+            while (resultado.next()) {    
+                usuario = new Usuario();
+                usuario.setId(resultado.getInt(1));
+                usuario.setNombre(resultado.getString(2));
+                usuario.setCui(resultado.getString(3));
+                usuario.setCodigo(resultado.getString(4));
+                usuario.setIrtra(resultado.getDouble(5));
+                usuario.setIgss(resultado.getDouble(6));
+                usuario.setSalario(resultado.getDouble(7));
+                usuario.setTipo(resultado.getString(8));
+                usuario.setJefe(resultado.getInt(9));
+                
+                lista.add(usuario);
+            }
+            
+            desconectar();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       
+        return lista;
+    }
 }

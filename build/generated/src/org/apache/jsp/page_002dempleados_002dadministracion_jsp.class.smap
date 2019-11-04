@@ -9,10 +9,14 @@ page-empleados-administracion.jsp
 header.html
 + 2 navegacion-administrador.html
 navegacion-administrador.html
++ 3 modal-contratar-administracion.html
+modal-contratar-administracion.html
 *L
-5,11:50
-1#1,8:61
-15#0,5:68
-1#2,10:73
-19#0,81:82
+5,11:51
+1#1,8:62
+15#0,5:69
+1#2,10:74
+19#0,21:83
+1#3,57:104
+39#0,7:160
 *E

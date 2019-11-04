@@ -81,4 +81,22 @@ public class AdministracionHabitacion extends Conexion{
         desconectar();
         return false;
     }
+    
+    public boolean verificarExistenciaPaciente(int id){
+        conectar();
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+habitacion+WHERE+"id="+id+";");
+            resultado.next();
+            if(resultado.getInt(2)==0){
+                desconectar();
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        desconectar();
+        return false;
+    }
 }
