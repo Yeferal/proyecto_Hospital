@@ -53,36 +53,43 @@ public class AreaAdmin extends HttpServlet {
     }
     
     private void verficacion(HttpServletRequest request, HttpServletResponse response, int tipo) throws IOException, ServletException{
-        if(tipo==0){
-            verificarExistencia(request, response);
-            
-        }else if(tipo==2){
-            admArea.eliminarArea(Integer.parseInt(request.getParameter("id")));
-            
-            ServletOutputStream stream1 = response.getOutputStream();
-             stream1.print("<html><head></head><body onload=\"alert('Se Elimino el Area'); window.location='HomeArea' \"></body></html>");
-             stream1.close();
-             
-        }else if(tipo==1){
-            Area area = new Area();
-            area.setNombre(request.getParameter("nombres"));
-            area.setId(Integer.parseInt(request.getParameter("id")));
-            request.setAttribute("objetoarea", area);
-            request.setAttribute("activo2", 1);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("HomeArea");
-            dispatcher.forward(request, response);
-            
-        }else if(tipo==3){
-            enviarModificacion(request, response);
-        }else if(tipo==5){           
-            Area area = new Area();
-            area.setNombre(request.getParameter("nombres"));
-            area.setId(Integer.parseInt(request.getParameter("id")));
-            request.setAttribute("objeto", area);
-            request.setAttribute("activo1", 1);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("HomeArea");
-            dispatcher.forward(request, response);
-            
+        switch (tipo) {
+            case 0:
+                verificarExistencia(request, response);
+                break;
+            case 2:
+                admArea.eliminarArea(Integer.parseInt(request.getParameter("id")));
+                ServletOutputStream stream1 = response.getOutputStream();
+                stream1.print("<html><head></head><body onload=\"alert('Se Elimino el Area'); window.location='HomeArea' \"></body></html>");
+                stream1.close();
+                break;
+            case 1:
+                {
+                    Area area = new Area();
+                    area.setNombre(request.getParameter("nombres"));
+                    area.setId(Integer.parseInt(request.getParameter("id")));
+                    request.setAttribute("objetoarea", area);
+                    request.setAttribute("activo2", 1);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("HomeArea");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+            case 3:
+                enviarModificacion(request, response);
+                break;
+            case 5:
+                {
+                    Area area = new Area();
+                    area.setNombre(request.getParameter("nombres"));
+                    area.setId(Integer.parseInt(request.getParameter("id")));
+                    request.setAttribute("objeto", area);
+                    request.setAttribute("activo1", 1);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("HomeArea");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+            default:
+                break;
         }
     }
     

@@ -55,37 +55,35 @@ public class HabitacionAdmin extends HttpServlet {
     private void verificarTipo(HttpServletRequest request, HttpServletResponse response, int tipo) throws ServletException, IOException{
         
         
-        if(tipo==0){
-           //verificarExistencia(request, response);
-            
-        }else if(tipo==1){
-            
-            enviarRegistro(request, response);
-             
-        }else if(tipo==2){
-
-            h.setId(Integer.parseInt(request.getParameter("id")));
-
-            request.setAttribute("objetohabitacioneliminar", h);
-            request.setAttribute("activo1", 1);
-            
-            direccionar(request, response);
-        }else if(tipo==3){
-            enviarHabitacionEliminar(request, response);
-        }
-        else if(tipo==4){
-            
-            h= adminHabitacion.getHabitacion(Integer.parseInt(request.getParameter("id")));
-            request.setAttribute("objetohabitacionmodificar", h);
-            request.setAttribute("activo2", 1);
-            direccionar(request, response);
-
-        }
-        else if(tipo==5){
-            enviarModificacion(request, response);
-        }
-        else if(tipo==6){
-            
+        switch (tipo) {
+        //verificarExistencia(request, response);
+            case 0:
+                break;
+            case 1:
+                enviarRegistro(request, response);
+                break;
+            case 2:
+                h.setId(Integer.parseInt(request.getParameter("id")));
+                request.setAttribute("objetohabitacioneliminar", h);
+                request.setAttribute("activo1", 1);
+                direccionar(request, response);
+                break;
+            case 3:
+                enviarHabitacionEliminar(request, response);
+                break;
+            case 4:
+                h= adminHabitacion.getHabitacion(Integer.parseInt(request.getParameter("id")));
+                request.setAttribute("objetohabitacionmodificar", h);
+                request.setAttribute("activo2", 1);
+                direccionar(request, response);
+                break;
+            case 5:
+                enviarModificacion(request, response);
+                break;
+            case 6:
+                break;
+            default:
+                break;
         }
     }
     

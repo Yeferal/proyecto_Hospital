@@ -2,51 +2,18 @@
 package com.hospital.administrador;
 
 import com.hospital.conexiones.Conexion;
+import static com.hospital.conexiones.Conexion.INSERT;
+import static com.hospital.conexiones.Conexion.VALUES;
+import static com.hospital.conexiones.Conexion.empleado;
+import static com.hospital.conexiones.Conexion.historiaLaboral;
 import com.mycompany.hospital.Usuario;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
-public class RegistroContrato extends Conexion{
+public class RegistroRenuncia extends Conexion{
     
     
-    
-    public boolean verificarContrato(String cui){
-        
-        try {
-            stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"cui='"+cui+"';");
-            
-            if(resultado.next()){
-                return true;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroContrato.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-    
-    
-    public boolean verificarEmpleadoExistente(String cui){
-        
-        try {
-            stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"cui='"+cui+"';");
-            
-            if(resultado.next()){
-                return true;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroContrato.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-    
-    
-    public void insertarContratoEmpleado(Usuario usuario, String tipoRegistro, String fecha){
+    public void insertarRenunciaEmpleado(Usuario usuario, String tipoRegistro, String fecha){
         conectar();
         try {
             insertar = conect.prepareStatement(INSERT+empleado+"(nombre,cui,codigo,irtra,igss,salario,tipo,jefe) "+VALUES+"(?,?,?,?,?,?,?,?);");
@@ -62,7 +29,7 @@ public class RegistroContrato extends Conexion{
             
             insertar.executeUpdate();
             
-            insertaHistorial(usuario, tipoRegistro, fecha);
+            insertaRenunciaHistorial(usuario, tipoRegistro, fecha);
             
             desconectar();
             
@@ -74,7 +41,7 @@ public class RegistroContrato extends Conexion{
     }
     
     
-    public void insertaHistorial(Usuario usuario,String tipoRegistro, String fecha){
+    public void insertaRenunciaHistorial(Usuario usuario,String tipoRegistro, String fecha){
         
         
         try {
@@ -94,4 +61,7 @@ public class RegistroContrato extends Conexion{
             ex.printStackTrace();
         }
     }
+    
+    
+    
 }

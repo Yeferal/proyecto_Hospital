@@ -1,0 +1,28 @@
+                <c:if test="${requestScope['activo1'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalcambiosalarial').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo2'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModaldespedir').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo3'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalrenuncia').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo4'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalmodificar').modal('show');
+                            });
+                    </script>
+                </c:if>

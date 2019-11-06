@@ -24,12 +24,6 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaln">
                               Contratar Empleado
                 </button>
-                
-                
-                
-                <form action="#" method="" >
-                    <input type="submit" value="Aumento Salarial" class="btn btn-primary">
-                </form>
 
         </div>
         <%@include file="modal-contratar-administracion.html" %>

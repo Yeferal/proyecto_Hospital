@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +53,7 @@ public class EmpleadoAdmin extends HttpServlet {
     }
     
     
-    private void verificarTipo(HttpServletRequest request, HttpServletResponse response, int tipo){
+    private void verificarTipo(HttpServletRequest request, HttpServletResponse response, int tipo) throws IOException{
         if(tipo==0){
             
         }else if(tipo==1){
@@ -60,7 +61,7 @@ public class EmpleadoAdmin extends HttpServlet {
         }
     }
     
-    private void enviarContrato(HttpServletRequest request, HttpServletResponse response){
+    private void enviarContrato(HttpServletRequest request, HttpServletResponse response) throws IOException{
         
         usuario.setNombre(request.getParameter("nombreempleado"));
         usuario.setCui(request.getParameter("cuiempleado"));
@@ -81,7 +82,19 @@ public class EmpleadoAdmin extends HttpServlet {
         usuario.setJefe(1);
         String fecha = request.getParameter("fecha");
 
-        registro.insertarContratoEmpleado(usuario, "Contrato", fecha);
+        if(!registro.verificarContrato(usuario.getCui())){
+            registro.insertarContratoEmpleado(usuario, "Contrato", fecha);
+            
+            ServletOutputStream stream1 = response.getOutputStream();
+             stream1.print("<html><head></head><body onload=\"alert('Se Agrego el Contrato'); window.location='EmpleadoAdmin' \"></body></html>");
+             stream1.close();
+        }else{
+            ServletOutputStream stream1 = response.getOutputStream();
+             stream1.print("<html><head></head><body onload=\"alert('El empleado ya tiene un contrato'); window.location='EmpleadoAdmin' \"></body></html>");
+             stream1.close();
+        }
+        
+        
         
     }
 
