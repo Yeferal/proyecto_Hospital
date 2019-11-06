@@ -30,29 +30,30 @@
         </div>
             
         <!--        este es el modal para Modificar el area seleccionado-->
-            <c:set var="modificararea" value="${objetohabitacion}"></c:set>
+            <c:set var="modificararea" value="${objetohabitacionmodificar}"></c:set>
             <div class="modal fade" id="exampleModalmodificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <form action="?tip=3&&id=${objetohabitacion.getId()}" method="POST">
+                                  Modificar Habitacion ID: ${modificararea.getId()}
+                                <form action="HabitacionAdmin?tip=5&&id=${modificararea.getId()}" method="POST">
                                 
                                     <label for="recipient-name" class="col-form-label">Estado de la Habitacion:</label>
                                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="estadoH" required>
-                                        <option selected="${objetohabitacion.getEstado()}">${objetohabitacion.getEstadoTexto()}</option>
+                                        <option selected="${modificararea.getEstado()}">${modificararea.getEstadoTexto()}</option>
                                         <option value="0">Inhabilitado</option>
                                         <option value="1">Habilitado</option>
                                       </select><br>
                                     <label for="recipient-name" class="col-form-label" >Costo:</label>
-                                    <input type="number" step="0.01" name="costo" value="${objetohabitacion.getCosto()}" required/><br>
+                                    <input type="number" step="0.01" name="costo" value="${modificararea.getCosto()}" required/><br>
                                     <label for="recipient-name" class="col-form-label">Cuota:</label>
-                                    <input type="number" step="0.01" name="cuota" value="${objetohabitacion.getCuota()}" required/><br>
+                                    <input type="number" step="0.01" name="cuota" value="${modificararea.getCuota()}" required/><br>
                                   <input type="submit" value="Modificar">
                                 </form>
                               </div>
@@ -65,7 +66,7 @@
                         </div>
         
 <!--        este es el modal para eliminar el area seleccionado-->
-            <c:set var="infor" value="${objetohabitacion}"></c:set>
+            <c:set var="objetohabitacion" value="${objetohabitacioneliminar}"></c:set>
             <div class="modal fade" id="exampleModaleliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -79,7 +80,7 @@
                                   Desea eliminar a No. <B>${objetohabitacion.getId()}</b>
                               </div>
                               
-                              <form action="?tip=3&&id=${objetohabitacion.getId()}" method="POST">
+                              <form action="HabitacionAdmin?tip=3&&id=${objetohabitacion.getId()}" method="POST">
                                   <input type="submit" value="Eliminar">
                               </form>
                               
@@ -122,7 +123,7 @@
                         </td>    
                     <td>
                             <div>
-                                <form action="#?tip=4&&id=${dato.getId()}" method="POST">
+                                <form action="HabitacionAdmin?tip=4&&id=${dato.getId()}" method="POST">
                             <input type="submit" value="Modificar">
                         </form>
                             </div>

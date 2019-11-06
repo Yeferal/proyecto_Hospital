@@ -37,9 +37,7 @@ public class HabitacionAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("datos", lista.listarHabitaciones() );
-        RequestDispatcher dispatcher = request.getRequestDispatcher("page-habitacion-administrador.jsp");
-        dispatcher.forward(request, response);
+        direccionar(request, response);
         
         
     }
@@ -68,21 +66,23 @@ public class HabitacionAdmin extends HttpServlet {
 
             h.setId(Integer.parseInt(request.getParameter("id")));
 
-            request.setAttribute("objetohabitacion", h);
+            request.setAttribute("objetohabitacioneliminar", h);
             request.setAttribute("activo1", 1);
-            request.setAttribute("datos", lista.listarHabitaciones() );
-            RequestDispatcher dispatcher = request.getRequestDispatcher("page-habitacion-administrador.jsp");
-            dispatcher.forward(request, response);
             
-            
+            direccionar(request, response);
         }else if(tipo==3){
             enviarHabitacionEliminar(request, response);
         }
         else if(tipo==4){
             
+            h= adminHabitacion.getHabitacion(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("objetohabitacionmodificar", h);
+            request.setAttribute("activo2", 1);
+            direccionar(request, response);
+
         }
         else if(tipo==5){
-            
+            enviarModificacion(request, response);
         }
         else if(tipo==6){
             
@@ -97,12 +97,24 @@ public class HabitacionAdmin extends HttpServlet {
         System.out.println(h.getEstadoTexto());
         adminHabitacion.insertarHabitacion(h);
         
-        request.setAttribute("datos", lista.listarHabitaciones() );
-        RequestDispatcher dispatcher = request.getRequestDispatcher("page-habitacion-administrador.jsp");
-        dispatcher.forward(request, response);
+        direccionar(request, response);
         
     }
     
+    public void enviarModificacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        
+        h.setEstado(Integer.parseInt(request.getParameter("estadoH")));
+        h.setCosto(Double.parseDouble(request.getParameter("costo")));
+        h.setCuota(Double.parseDouble(request.getParameter("cuota")));
+        System.out.println(h.getEstadoTexto());
+        adminHabitacion.modificarHabitacion(h);
+        ServletOutputStream stream1 = response.getOutputStream();
+                stream1.print("<html><head></head><body onload=\"alert('Se Modifico la Habitacion'); window.location='HabitacionAdmin' \"></body></html>");
+             stream1.close();
+        
+    }
+    
+     
     private void enviarHabitacionEliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         int id = Integer.parseInt(request.getParameter("id"));
         
@@ -116,6 +128,12 @@ public class HabitacionAdmin extends HttpServlet {
              stream1.print("<html><head></head><body onload=\"alert('Esta habitacion no puede ser eliminada ya que esta en uso'); window.location='' \"></body></html>");
              stream1.close();
         }
+    }
+    
+    private void direccionar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setAttribute("datos", lista.listarHabitaciones() );
+        RequestDispatcher dispatcher = request.getRequestDispatcher("page-habitacion-administrador.jsp");
+        dispatcher.forward(request, response);
     }
 
 }
