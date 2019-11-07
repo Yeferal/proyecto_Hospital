@@ -27,6 +27,8 @@
 
         </div>
         <%@include file="modal-contratar-administracion.html" %>
+        <%@include file="modal-empleado-administracion.html" %>
+        <%@include file="scripts-administracion-empleado.html" %>
                         
         <table border="1">
             <thead>
@@ -57,22 +59,22 @@
                     <td>${dato.getSalario()}</td>
                     <td>${dato.getTipo()}</td>
                     <td>
-                        <form action="#" method="">
+                        <form action="SalarioAdmin?tip=1&&id=${dato.getId()}" method="post">
                             <input type="submit" value="Cambio Salarial" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="#" method="" >
+                        <form action="DespidoAdmin?tip=1&&id=${dato.getId()}" method="post" >
                             <input type="submit" value="Despedir" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="#" method="" >
+                        <form action="RenunciaAdmin?tip=1&&id=${dato.getId()}" method="POST" >
                             <input type="submit" value="Renuncia" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="#" method="" >
+                        <form action="ModificacionAdmin?tip=1&&id=${dato.getId()}" method="post" >
                             <input type="submit" value="Modificar" class="btn btn-primary">
                         </form>
                     </td>

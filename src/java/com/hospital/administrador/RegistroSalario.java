@@ -2,40 +2,32 @@
 package com.hospital.administrador;
 
 import com.hospital.conexiones.Conexion;
-import static com.hospital.conexiones.Conexion.INSERT;
-import static com.hospital.conexiones.Conexion.VALUES;
-import static com.hospital.conexiones.Conexion.empleado;
-import static com.hospital.conexiones.Conexion.historiaLaboral;
 import com.mycompany.hospital.Usuario;
 import java.sql.SQLException;
 
 
-public class RegistroRenuncia extends Conexion{
+public class RegistroSalario extends Conexion{
     
     
-    public void insertarRenunciaEmpleado(Usuario usuario, String tipoRegistro, String fecha){
-        usuario = getUsuario(usuario.getId());    
     
+    
+    public void cambiarSalarioEmpleado(Usuario usuario, String tipoRegistro, String fecha){
         conectar();
+        
         try {
-            insertar = conect.prepareStatement(DELETE+FROM+empleado+WHERE+"id="+usuario.getId()+";");
-                       
+            
+            insertar = conect.prepareStatement(UPDATE+empleado+SET+"salario="+usuario.getSalario()+" "+WHERE+"id="+usuario.getId()+";");
             insertar.executeUpdate();
             
-            insertaRenunciaHistorial(usuario, tipoRegistro, fecha);
             
-            desconectar();
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            insertarHistorialSalario(usuario, tipoRegistro, fecha);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        
-        
     }
     
     
-    public void insertaRenunciaHistorial(Usuario usuario,String tipoRegistro, String fecha){
-        
+    public void insertarHistorialSalario(Usuario usuario, String tipoRegistro, String fecha){
         
         try {
             insertar = conect.prepareStatement(INSERT+historiaLaboral+"(empleado,cui_empleado,salario_empleado,tipo_historial,area_trabajo,fecha_registro) "+VALUES+"(?,?,?,?,?,?);");
@@ -49,10 +41,11 @@ public class RegistroRenuncia extends Conexion{
             
             insertar.executeUpdate();
             
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        
+        
     }
     
     
@@ -81,7 +74,5 @@ public class RegistroRenuncia extends Conexion{
         
         return u;
     }
-    
-    
     
 }

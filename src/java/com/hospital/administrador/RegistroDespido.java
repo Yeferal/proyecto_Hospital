@@ -2,29 +2,32 @@
 package com.hospital.administrador;
 
 import com.hospital.conexiones.Conexion;
+import static com.hospital.conexiones.Conexion.FROM;
 import static com.hospital.conexiones.Conexion.INSERT;
+import static com.hospital.conexiones.Conexion.SELECT;
 import static com.hospital.conexiones.Conexion.VALUES;
+import static com.hospital.conexiones.Conexion.WHERE;
 import static com.hospital.conexiones.Conexion.empleado;
 import static com.hospital.conexiones.Conexion.historiaLaboral;
 import com.mycompany.hospital.Usuario;
 import java.sql.SQLException;
 
 
-public class RegistroRenuncia extends Conexion{
+public class RegistroDespido extends Conexion{
     
+public void insertarDespidoEmpleado(Usuario usuario, String tipoRegistro, String fecha){
+    usuario = getUsuario(usuario.getId());    
     
-    public void insertarRenunciaEmpleado(Usuario usuario, String tipoRegistro, String fecha){
-        usuario = getUsuario(usuario.getId());    
-    
-        conectar();
+    conectar();
+        
         try {
-            insertar = conect.prepareStatement(DELETE+FROM+empleado+WHERE+"id="+usuario.getId()+";");
+            insertar = conect.prepareStatement(DELETE+FROM+historiaLaboral+WHERE+"id="+usuario.getId()+";");
                        
             insertar.executeUpdate();
             
             insertaRenunciaHistorial(usuario, tipoRegistro, fecha);
             
-            desconectar();
+            
             
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -49,7 +52,7 @@ public class RegistroRenuncia extends Conexion{
             
             insertar.executeUpdate();
             
-            
+            desconectar();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -81,7 +84,4 @@ public class RegistroRenuncia extends Conexion{
         
         return u;
     }
-    
-    
-    
 }

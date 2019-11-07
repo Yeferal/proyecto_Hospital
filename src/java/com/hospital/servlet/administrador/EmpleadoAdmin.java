@@ -73,9 +73,9 @@ public class EmpleadoAdmin extends HttpServlet {
         }
         
         if(request.getParameter("igssempleado").isEmpty()){
-            usuario.setIrtra(0);
+            usuario.setIgss(0);
         }else{
-            usuario.setIrtra(Double.parseDouble(request.getParameter("igssempleado")));
+            usuario.setIgss(Double.parseDouble(request.getParameter("igssempleado")));
         }
         usuario.setSalario(Double.parseDouble(request.getParameter("salarioempleado")));
         usuario.setTipo(request.getParameter("tipoempleado"));

@@ -1,8 +1,12 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.hospital.servlet.administrador;
 
 import com.hospital.administrador.ListaAdministracion;
-import com.hospital.administrador.RegistroRenuncia;
+import com.hospital.administrador.RegistroModificacion;
 import com.mycompany.hospital.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,10 +22,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author yefer
  */
-@WebServlet(name = "RenunciaAdmin", urlPatterns = {"/RenunciaAdmin"})
-public class RenunciaAdmin extends HttpServlet {
+@WebServlet(name = "ModificacionAdmin", urlPatterns = {"/ModificacionAdmin"})
+public class ModificacionAdmin extends HttpServlet {
 
-    RegistroRenuncia registro = new RegistroRenuncia();
+    RegistroModificacion registro =  new RegistroModificacion();
     Usuario u = new Usuario();
     ListaAdministracion lista = new ListaAdministracion();
     
@@ -44,38 +48,59 @@ public class RenunciaAdmin extends HttpServlet {
         int tipo = Integer.parseInt(request.getParameter("tip"));
         
         if(tipo==1){
+            
             u.setId(Integer.parseInt(request.getParameter("id")));
+            System.out.println("id:"+u.getId());
             u = registro.getUsuario(u.getId());
-                request.setAttribute("objetoRenuncia", u);
-                request.setAttribute("activo3", 1);
+                request.setAttribute("objetoModificacion", u);
+                request.setAttribute("activo4", 1);
                 redireccionar(request, response);
+            
         }else if(tipo==2){
-            enviarRenuncia(request, response);
+            enviarModificacion(request, response);
             
         }
-        
-        
-        
     }
     
-    
-    public void enviarRenuncia(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        u.setId(Integer.parseInt(request.getParameter("id")));
+    private void enviarModificacion(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        
+        
+        u.setNombre(request.getParameter("nombreempleado"));
+        u.setCui(request.getParameter("cuiempleado"));
+        u.setCodigo(request.getParameter("codigoempleado"));
+        if(request.getParameter("irtrampleado").isEmpty()){
+            u.setIrtra(0);
+        }else{
+            u.setIrtra(Double.parseDouble(request.getParameter("irtrampleado")));
+        }
+        
+        if(request.getParameter("igssempleado").isEmpty()){
+            u.setIgss(0);
+        }else{
+            u.setIgss(Double.parseDouble(request.getParameter("igssempleado")));
+        }
+        u.setSalario(Double.parseDouble(request.getParameter("salarioempleado")));
+        u.setTipo(request.getParameter("tipoempleado"));
+        u.setJefe(1);
+        
         String fecha = request.getParameter("fecha");
-        registro.insertarRenunciaEmpleado(u, "Renuncia", fecha);
+        
+        registro.modificarEmpleado(u, "Modificacion de datos", fecha);
         
         ServletOutputStream stream1 = response.getOutputStream();
-             stream1.print("<html><head></head><body onload=\"alert('El empleado Renuncio'); window.location='RenunciaAdmin' \"></body></html>");
-             stream1.close();
-        
+        stream1.print("<html><head></head><body onload=\"alert('El empleado fue Modificado'); window.location='ModificacionAdmin' \"></body></html>");
+        stream1.close();
         
     }
+    
+    
     
     public void redireccionar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         request.setAttribute("datos", lista.listarEmpleadosAdministracion());
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-empleados-administracion.jsp");
         dispatcher.forward(request, response);
     }
+
 
 
 }

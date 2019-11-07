@@ -2,6 +2,7 @@
 package com.hospital.servlet.administrador;
 
 import com.hospital.administrador.ListaAdministracion;
+import com.hospital.administrador.RegistroDespido;
 import com.hospital.administrador.RegistroRenuncia;
 import com.mycompany.hospital.Usuario;
 import java.io.IOException;
@@ -14,14 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author yefer
- */
-@WebServlet(name = "RenunciaAdmin", urlPatterns = {"/RenunciaAdmin"})
-public class RenunciaAdmin extends HttpServlet {
 
-    RegistroRenuncia registro = new RegistroRenuncia();
+@WebServlet(name = "DespidoAdmin", urlPatterns = {"/DespidoAdmin"})
+public class DespidoAdmin extends HttpServlet {
+
+    RegistroDespido registro = new RegistroDespido();
     Usuario u = new Usuario();
     ListaAdministracion lista = new ListaAdministracion();
     
@@ -30,14 +28,14 @@ public class RenunciaAdmin extends HttpServlet {
         
     }
 
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         redireccionar(request, response);
     }
 
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,8 +44,8 @@ public class RenunciaAdmin extends HttpServlet {
         if(tipo==1){
             u.setId(Integer.parseInt(request.getParameter("id")));
             u = registro.getUsuario(u.getId());
-                request.setAttribute("objetoRenuncia", u);
-                request.setAttribute("activo3", 1);
+                request.setAttribute("objetoDespido", u);
+                request.setAttribute("activo2", 1);
                 redireccionar(request, response);
         }else if(tipo==2){
             enviarRenuncia(request, response);
@@ -62,12 +60,10 @@ public class RenunciaAdmin extends HttpServlet {
     public void enviarRenuncia(HttpServletRequest request, HttpServletResponse response) throws IOException{
         u.setId(Integer.parseInt(request.getParameter("id")));
         String fecha = request.getParameter("fecha");
-        registro.insertarRenunciaEmpleado(u, "Renuncia", fecha);
-        
+        registro.insertarDespidoEmpleado(u, "Despido", fecha);
         ServletOutputStream stream1 = response.getOutputStream();
-             stream1.print("<html><head></head><body onload=\"alert('El empleado Renuncio'); window.location='RenunciaAdmin' \"></body></html>");
-             stream1.close();
-        
+        stream1.print("<html><head></head><body onload=\"alert('El empleado fue despedido'); window.location='DespidoAdmin' \"></body></html>");
+        stream1.close();
         
     }
     
@@ -76,6 +72,5 @@ public class RenunciaAdmin extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-empleados-administracion.jsp");
         dispatcher.forward(request, response);
     }
-
 
 }
