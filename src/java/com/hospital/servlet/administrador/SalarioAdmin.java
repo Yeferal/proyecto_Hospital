@@ -2,7 +2,7 @@
 package com.hospital.servlet.administrador;
 
 import com.hospital.administrador.ListaAdministracion;
-import com.hospital.administrador.RegistroSalario;
+import com.hospital.recursoshumanos.RegistroSalario;
 import com.mycompany.hospital.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;

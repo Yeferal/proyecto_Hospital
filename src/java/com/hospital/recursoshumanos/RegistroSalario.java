@@ -1,5 +1,5 @@
 
-package com.hospital.administrador;
+package com.hospital.recursoshumanos;
 
 import com.hospital.conexiones.Conexion;
 import com.mycompany.hospital.Usuario;
