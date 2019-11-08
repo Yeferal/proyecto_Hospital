@@ -11,9 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hospital</title>
-        <link rel="stylesheet" href="css/stiloMenu.css">
-        <link rel="stylesheet" href="css/stiloModal.css">
         <%@include file="header.html" %>
+        <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
         

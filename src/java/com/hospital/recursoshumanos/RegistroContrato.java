@@ -1,15 +1,21 @@
 
-package com.hospital.administrador;
+package com.hospital.recursoshumanos;
 
 import com.hospital.conexiones.Conexion;
+import static com.hospital.conexiones.Conexion.FROM;
+import static com.hospital.conexiones.Conexion.INSERT;
+import static com.hospital.conexiones.Conexion.SELECT;
+import static com.hospital.conexiones.Conexion.VALUES;
+import static com.hospital.conexiones.Conexion.WHERE;
+import static com.hospital.conexiones.Conexion.empleado;
+import static com.hospital.conexiones.Conexion.historiaLaboral;
 import com.mycompany.hospital.Usuario;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class RegistroContrato extends Conexion{
-    
+public class RegistroContrato extends  Conexion{
     
     
     public boolean verificarContrato(String cui){
@@ -24,7 +30,7 @@ public class RegistroContrato extends Conexion{
             }
             desconectar();
         } catch (SQLException ex) {
-            Logger.getLogger(RegistroContrato.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(com.hospital.administrador.RegistroContrato.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -41,7 +47,7 @@ public class RegistroContrato extends Conexion{
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(RegistroContrato.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(com.hospital.administrador.RegistroContrato.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -95,4 +101,6 @@ public class RegistroContrato extends Conexion{
             ex.printStackTrace();
         }
     }
+    
+    
 }

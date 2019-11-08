@@ -1,9 +1,3 @@
-<%-- 
-    Document   : page-empleados-administracion
-    Created on : 1/11/2019, 11:50:59 PM
-    Author     : yefer
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,19 +9,16 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        
-        <%@include file="navegacion-administrador.html" %>
+        <%@include file="navegacion-recursos-humanos.html" %>
         <br>
         <div>
-
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaln">
-                              Contratar Empleado
+                Contratar Empleado
                 </button>
 
         </div>
-        <%@include file="modal-contratar-administracion.html" %>
-        <%@include file="modal-empleado-administracion.html" %>
-        <%@include file="scripts-administracion-empleado.html" %>
+        <%@include file="modal-empleado-recuroshumanos.html" %>
+        <%@include file="scripts-empleado-recursoshumanos.html" %>
                         
         <table border="1">
             <thead>
@@ -58,22 +49,22 @@
                     <td>${dato.getSalario()}</td>
                     <td>${dato.getTipo()}</td>
                     <td>
-                        <form action="SalarioAdmin?tip=1&&id=${dato.getId()}" method="post">
+                        <form action="?tip=1&&id=${dato.getId()}" method="post">
                             <input type="submit" value="Cambio Salarial" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="DespidoAdmin?tip=1&&id=${dato.getId()}" method="post" >
+                        <form action="?tip=1&&id=${dato.getId()}" method="post" >
                             <input type="submit" value="Despedir" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="RenunciaAdmin?tip=1&&id=${dato.getId()}" method="POST" >
+                        <form action="?tip=1&&id=${dato.getId()}" method="POST" >
                             <input type="submit" value="Renuncia" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="ModificacionAdmin?tip=1&&id=${dato.getId()}" method="post" >
+                        <form action="?tip=1&&id=${dato.getId()}" method="post" >
                             <input type="submit" value="Modificar" class="btn btn-primary">
                         </form>
                     </td>
@@ -81,8 +72,5 @@
                 </c:forEach>
             </tbody>
         </table>
-
-            
-        </div>
     </body>
 </html>

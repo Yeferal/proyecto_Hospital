@@ -7,9 +7,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hospital</title>
-        <link rel="stylesheet" href="css/stiloMenu.css">
-        <link rel="stylesheet" href="css/stiloModal.css">
+        
         <%@include file="header.html" %>
+        <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
         <%@include file="navegacion-administrador.html" %>
@@ -99,7 +99,7 @@
                             </div>
                           </div>
             </div>
-        
+                      
         <table border="1" cellpadding="1">
             <thead>
                 <tr>
@@ -145,6 +145,6 @@
                 </c:if>
             </tbody>
         </table>
-
+   
     </body>
 </html>

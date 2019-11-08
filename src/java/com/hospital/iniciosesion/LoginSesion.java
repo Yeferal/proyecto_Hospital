@@ -67,8 +67,8 @@ public class LoginSesion extends HttpServlet {
         switch(usuario.getTipo()){
             case "Administrador":
                 return "HomeArea";
-            case "":
-                
+            case "Recursos Humanos":
+                return "HomeRecursosHumanos";
         }
         
             return "";
