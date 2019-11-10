@@ -49,22 +49,22 @@
                     <td>${dato.getSalario()}</td>
                     <td>${dato.getTipo()}</td>
                     <td>
-                        <form action="?tip=1&&id=${dato.getId()}" method="post">
+                        <form action="Salario?tip=1&&id=${dato.getId()}" method="post">
                             <input type="submit" value="Cambio Salarial" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="?tip=1&&id=${dato.getId()}" method="post" >
+                        <form action="Despido?tip=1&&id=${dato.getId()}" method="post" >
                             <input type="submit" value="Despedir" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="?tip=1&&id=${dato.getId()}" method="POST" >
+                        <form action="Renuncia?tip=1&&id=${dato.getId()}" method="POST" >
                             <input type="submit" value="Renuncia" class="btn btn-primary">
                         </form>
                     </td>
                     <td>
-                        <form action="?tip=1&&id=${dato.getId()}" method="post" >
+                        <form action="ModificacionEmpleado?tip=1&&id=${dato.getId()}" method="post" >
                             <input type="submit" value="Modificar" class="btn btn-primary">
                         </form>
                     </td>

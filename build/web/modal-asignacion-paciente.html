@@ -1,0 +1,73 @@
+<!-- Modal Asignar Medico -->
+                        <div class="modal fade" id="exampleModalMedico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Habitacion</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="IngresoPaciente" method="POST">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label" >Nombre del Paciente:</label>
+                                    
+                                    <label for="recipient-name" class="col-form-label">Asignar medico:</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="medico" required>
+                                        <option selected></option>
+                                        <c:forEach var="medico" items="${medicos}">
+                                        <option value="${medico.getId()}">${medico.getNombre()}</option>
+                                        </c:forEach>
+                                    </select><br>
+
+                                    <input type="submit" value="Agregar">
+                                    </div>
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+<!-- Modal Asignar Enfermero -->
+                        <div class="modal fade" id="exampleModalEnfermero" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Habitacion</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="IngresoPaciente" method="POST">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label" >Nombre del Paciente:</label>
+                                    
+                                    <label for="recipient-name" class="col-form-label">Asignar Engermer@:</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="enfermero" required>
+                                        <option selected></option>
+                                        <c:forEach var="enfermero" items="${enfermeros}">
+                                        <option value="${enfermero.getId()}">${enfermero.getNombre()}</option>
+                                        </c:forEach>
+                                    </select><br>
+                                    
+                                    
+                                    <input type="submit" value="Agregar">
+                                    </div>
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>

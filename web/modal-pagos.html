@@ -1,0 +1,93 @@
+<!-- Modal pago empleados-->
+                        <div class="modal fade" id="exampleModalen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Pagar Empleado</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="PagoPersonal?tip=1" method="POST">
+                                <div class="form-group">
+                                    
+                                    <label for="recipient-name" class="col-form-label">Empleado:</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="nombre" required>
+                                        <option selected ></option>
+                                        <c:forEach var="empleados" items="${objetoEmpleados}">
+                                        <option value="${empleados.getId()}">${empleados.getNombre()}</option>
+                                        
+                                        </c:forEach>
+                                      </select><br><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >CUI del Empleado:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="cuiempleado" placeholder="CUI" required><br>
+
+                                    <label for="recipient-name" class="col-form-label" >Pago de Empleado:</label>
+                                    <input type="number" step="0.01" name="pago" value="${empleados.getId()}"/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Fecha del Pago:</label>
+                                    <input type="date" name="fecha" required/><br><br>
+                                    
+                                    <input type="submit" value="Pagar">
+                                    
+                                    </div>
+                                    
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+<!-- Modal pago especialista-->
+                        <div class="modal fade" id="exampleModales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Pagar Especialista</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="PagoPersonal?tip=2" method="POST">
+                                <div class="form-group">
+                                    
+                                    <label for="recipient-name" class="col-form-label">Especialista:</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="nombre" required>
+                                        <option selected ></option>
+                                        <c:forEach var="especialistas" items="${objetoEspecialistas}">
+                                        <option value="${especialistas.getId()}">${especialistas.getNombre()}</option>
+                                        </c:forEach>
+                                      </select><br><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >CUI del Especialista:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="cuiempleado" placeholder="CUI" required><br>
+
+                                    <label for="recipient-name" class="col-form-label" >Pago de Especialista:</label>
+                                    <input type="number" step="0.01" name="pago"/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Fecha del Pago:</label>
+                                    <input type="date" name="fecha" required/><br><br>
+                                    
+                                    <input type="submit" value="Pagar">
+                                    
+                                    </div>
+                                    
+                              </form>
+                                  <a href="TarifarioRecHumanos" target="_Blank" class="btn btn-secondary">Consultar Tarifario</a>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>

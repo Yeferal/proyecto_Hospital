@@ -6,6 +6,7 @@ import static com.hospital.conexiones.Conexion.FROM;
 import static com.hospital.conexiones.Conexion.SELECT;
 import static com.hospital.conexiones.Conexion.WHERE;
 import static com.hospital.conexiones.Conexion.empleado;
+import com.mycompany.hospital.Tarifa;
 import com.mycompany.hospital.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -72,5 +73,57 @@ public class ListaRecursosHumanos extends Conexion{
        
         return lista;
         
+    }
+    
+    public List listarEspecialistas(){
+        List<Usuario> lista = new ArrayList<>();
+        Usuario usuario = null;
+        conectar();
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+especialistas+";");
+            
+            while (resultado.next()) {    
+                usuario = new Usuario();
+                usuario.setId(resultado.getInt(1));
+                usuario.setNombre(resultado.getString(2));
+                usuario.setCui(resultado.getString(3));
+                
+                lista.add(usuario);
+            }
+            
+            desconectar();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       
+        return lista;
+    }
+    
+    public List listarTarifas(){
+        List<Tarifa> lista = new ArrayList<>();
+        Tarifa tarifa = null;
+        conectar();
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+tarifario+";");
+            
+            while (resultado.next()) {    
+                tarifa = new Tarifa();
+                tarifa.setId(resultado.getInt(1));
+                tarifa.setTipo(resultado.getString(2));
+                tarifa.setPrecio(resultado.getDouble(3));
+                tarifa.setCosto(resultado.getDouble(4));
+                tarifa.setCuota(resultado.getDouble(5));
+                
+                lista.add(tarifa);
+            }
+            
+            desconectar();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       
+        return lista;
     }
 }

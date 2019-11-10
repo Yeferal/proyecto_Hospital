@@ -2,32 +2,40 @@
 package com.hospital.recursoshumanos;
 
 import com.hospital.conexiones.Conexion;
+import static com.hospital.conexiones.Conexion.FROM;
+import static com.hospital.conexiones.Conexion.INSERT;
+import static com.hospital.conexiones.Conexion.SELECT;
+import static com.hospital.conexiones.Conexion.SET;
+import static com.hospital.conexiones.Conexion.UPDATE;
+import static com.hospital.conexiones.Conexion.VALUES;
+import static com.hospital.conexiones.Conexion.WHERE;
+import static com.hospital.conexiones.Conexion.empleado;
+import static com.hospital.conexiones.Conexion.historiaLaboral;
 import com.mycompany.hospital.Usuario;
 import java.sql.SQLException;
 
 
-public class RegistroSalario extends Conexion{
+public class RegistroModificacionEmpleado extends Conexion{
+ 
     
-    
-    
-    
-    public void cambiarSalarioEmpleado(Usuario usuario, String tipoRegistro, String fecha){
+    public void modificarEmpleado(Usuario usuario, String tipoRegistro, String fecha){
         conectar();
         
         try {
             
-            insertar = conect.prepareStatement(UPDATE+empleado+SET+"salario="+usuario.getSalario()+" "+WHERE+"id="+usuario.getId()+";");
+            insertar = conect.prepareStatement(UPDATE+empleado+SET+"nombre='"+usuario.getNombre()+"', cui='"+usuario.getCui()+"', codigo='"+usuario.getCodigo()+"', irtra="+usuario.getIrtra()+", igss="+usuario.getIgss()+", salario="+usuario.getSalario()+", tipo='"+usuario.getTipo()+"' "+WHERE+"id="+usuario.getId()+";");
+            
             insertar.executeUpdate();
             
             
-            insertarHistorialSalario(usuario, tipoRegistro, fecha);
+            insertarHistorialModificacion(usuario, tipoRegistro, fecha);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
     
     
-    public void insertarHistorialSalario(Usuario usuario, String tipoRegistro, String fecha){
+    public void insertarHistorialModificacion(Usuario usuario, String tipoRegistro, String fecha){
         
         try {
             insertar = conect.prepareStatement(INSERT+historiaLaboral+"(empleado,cui_empleado,salario_empleado,tipo_historial,area_trabajo,fecha_registro) "+VALUES+"(?,?,?,?,?,?);");
@@ -46,8 +54,7 @@ public class RegistroSalario extends Conexion{
         }
         
         
-    }
-    
+    }    
     
     public Usuario getUsuario(int id){
         Usuario u = new Usuario();
@@ -74,5 +81,4 @@ public class RegistroSalario extends Conexion{
         
         return u;
     }
-    
 }

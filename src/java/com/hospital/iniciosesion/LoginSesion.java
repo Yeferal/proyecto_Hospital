@@ -69,8 +69,9 @@ public class LoginSesion extends HttpServlet {
                 return "HomeArea";
             case "Recursos Humanos":
                 return "HomeRecursosHumanos";
-        }
-        
+            case "Recepcion":
+                return "RecepcionPaciente";
+        }   
             return "";
         
     }

@@ -1,0 +1,66 @@
+<!-- Modal Ingreso Paciente -->
+                        <div class="modal fade" id="exampleModaln" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Habitacion</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="IngresoPaciente" method="POST">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label" >Nombre del Paciente:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="nombre" placeholder="Nombre" required><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >CUI del Paciente:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="cui" placeholder="CUI" required><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Fecha de Nacimiento:</label>
+                                      <input type="date" name="fechaNacimiento" required/><br><br>
+                                      
+                                      <label for="recipient-name" class="col-form-label" >Edad:</label>
+                                    <input type="number" name="edad" required/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label">Habitacion Asignada:</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="habitacion" required>
+                                        <option selected></option>
+                                        <c:forEach var="habitacion" items="${habitaciones}">
+                                        <option value="${habitacion}">${habitacion}</option>
+                                        </c:forEach>
+                                    </select><br>
+                                      
+                                      
+                                      <label for="recipient-name" class="col-form-label" >Fecha de Ingreso:</label>
+                                      <input type="date" name="fechaIngreso" required/><br><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label">Asignar Primer medico:</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="medico" required>
+                                        <option selected></option>
+                                        <c:forEach var="medico" items="${medicos}">
+                                        <option value="${medico.getId()}">${medico.getNombre()}</option>
+                                        </c:forEach>
+                                    </select><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label">Asignar Primer Engermer@:</label>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="enfermero" required>
+                                        <option selected></option>
+                                        <c:forEach var="enfermero" items="${enfermeros}">
+                                        <option value="${enfermero.getId()}">${enfermero.getNombre()}</option>
+                                        </c:forEach>
+                                    </select><br>
+                                    
+                                    
+                                    <input type="submit" value="Agregar">
+                                    </div>
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>

@@ -1,21 +1,15 @@
 
-package com.hospital.servlet.recursoshumanos;
+package com.hospital.administrador;
 
 import com.hospital.conexiones.Conexion;
-import static com.hospital.conexiones.Conexion.FROM;
-import static com.hospital.conexiones.Conexion.INSERT;
-import static com.hospital.conexiones.Conexion.SELECT;
-import static com.hospital.conexiones.Conexion.SET;
-import static com.hospital.conexiones.Conexion.UPDATE;
-import static com.hospital.conexiones.Conexion.VALUES;
-import static com.hospital.conexiones.Conexion.WHERE;
-import static com.hospital.conexiones.Conexion.empleado;
-import static com.hospital.conexiones.Conexion.historiaLaboral;
 import com.mycompany.hospital.Usuario;
 import java.sql.SQLException;
 
 
-public class CambioSalario extends Conexion{
+public class RegistroSalario extends Conexion{
+    
+    
+    
     
     public void cambiarSalarioEmpleado(Usuario usuario, String tipoRegistro, String fecha){
         conectar();
@@ -80,6 +74,5 @@ public class CambioSalario extends Conexion{
         
         return u;
     }
-    
     
 }

@@ -72,8 +72,6 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>Hospital</title>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/stiloMenu.css\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/stiloModal.css\">\n");
       out.write("        ");
       out.write("        <link rel=\"stylesheet\" href=\"css/stiloMenu.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/stiloModal.css\">\n");
@@ -83,14 +81,17 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>\n");
       out.write("    \n");
       out.write("\n");
+      out.write("        <link rel=\"stylesheet\" href=\"css/stiloMenu.css\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
       out.write("<div id=\"menu\" >\n");
       out.write("    <ul class=\"menu2\">\n");
-      out.write("        <li><a href=\"\">Empleados</a></li>\n");
-      out.write("        <li><a href=\"\"></a></li>\n");
-      out.write("        <li><a href=\"#\">Vacaciones</a></li> \n");
+      out.write("        <li><a href=\"HomeRecursosHumanos\">Empleados</a></li>\n");
+      out.write("        <li><a href=\"Especialistas\">Especialistas</a></li>\n");
+      out.write("        <li><a href=\"TarifarioRecHumanos\">Tarifario</a></li>\n");
+      out.write("        <li><a href=\"#\">Asignar Pagos</a></li>\n");
+      out.write("        <li><a href=\"#\">Vacaciones</a></li>\n");
       out.write("        <li><a href=\"\" target=\"_Blank\">Reportes</a></li>  \n");
       out.write("        <li><a href=\"CloseSesion\" >Cerrar Sesion</a></li>       \n");
       out.write("    </ul>\n");
@@ -98,8 +99,16 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("\n");
       out.write("        <br>\n");
       out.write("        <div>\n");
-      out.write("\n");
       out.write("                <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModaln\">\n");
+      out.write("                Contratar Empleado\n");
+      out.write("                </button>\n");
+      out.write("            <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModaln\">\n");
+      out.write("                Contratar Empleado\n");
+      out.write("                </button>\n");
+      out.write("            <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModaln\">\n");
+      out.write("                Contratar Empleado\n");
+      out.write("                </button>\n");
+      out.write("            <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModaln\">\n");
       out.write("                Contratar Empleado\n");
       out.write("                </button>\n");
       out.write("\n");
@@ -117,7 +126,7 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("                              </div>\n");
       out.write("                              <div class=\"modal-body\">\n");
       out.write("                                  \n");
-      out.write("                                <form action=\"EmpleadoAdmin?tip=1\" method=\"POST\">\n");
+      out.write("                                <form action=\"Contrato?tip=1\" method=\"POST\">\n");
       out.write("                                <div class=\"form-group\">\n");
       out.write("                                    \n");
       out.write("                                    <label for=\"recipient-name\" class=\"col-form-label\" >Nombre del Empleado:</label>\n");
@@ -141,10 +150,19 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("                                    <label for=\"recipient-name\" class=\"col-form-label\">Tipo:</label>\n");
       out.write("                                    <select class=\"custom-select mr-sm-2\" id=\"inlineFormCustomSelect\" name=\"tipoempleado\" required>\n");
       out.write("                                        <option selected ></option>\n");
-      out.write("                                        <option value=\"Gerente\">Gerente</option>\n");
-      out.write("                                        <option value=\"Recursos Humanos\">Recursos Humanos</option>\n");
-      out.write("                                        <option value=\"Administrador\">Administrador</option>\n");
-      out.write("                                      </select><br><br>\n");
+      out.write("                                        ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                                      </select><br>\n");
+      out.write("                                      \n");
+      out.write("                                      <label for=\"recipient-name\" class=\"col-form-label\">Es Jefe:</label>\n");
+      out.write("                                    <select class=\"custom-select mr-sm-2\" id=\"inlineFormCustomSelect\" name=\"jefe\" required>\n");
+      out.write("                                        <option selected ></option>\n");
+      out.write("                                        <option value=\"1\">SI</option>\n");
+      out.write("                                        <option value=\"0\">NO</option>\n");
+      out.write("                                      </select><br>\n");
+      out.write("                                      \n");
       out.write("                                      <label for=\"recipient-name\" class=\"col-form-label\" >Fecha de Contratacion:</label>\n");
       out.write("                                      <input type=\"date\" name=\"fecha\" required/><br><br>\n");
       out.write("                                      \n");
@@ -182,7 +200,7 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("                                  Cambiar el salario del empleado: <b>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoSalario.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</b>\n");
-      out.write("                                <form action=\"SalarioAdmin?tip=2&&id=");
+      out.write("                                <form action=\"Salario?tip=2&&id=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoSalario.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\" method=\"POST\">\n");
       out.write("                                <div class=\"form-group\">\n");
@@ -227,7 +245,7 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("                                  Confirma el Despido del empleado: <b>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoDespido.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</b>\n");
-      out.write("                                <form action=\"DespidoAdmin?tip=2&&id=");
+      out.write("                                <form action=\"Despido?tip=2&&id=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoDespido.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\" method=\"POST\">\n");
       out.write("                                <div class=\"form-group\">\n");
@@ -266,7 +284,7 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("                                  Confirma la renuncia del empleado: <b>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoRenuncia.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</b>\n");
-      out.write("                                <form action=\"RegistroRenuncia?tip=2&&id=");
+      out.write("                                <form action=\"Renuncia?tip=2&&id=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoRenuncia.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\" method=\"POST\">\n");
       out.write("                                <div class=\"form-group\">\n");
@@ -305,7 +323,7 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("                                  Modificar al Empleado: <b>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoModificar.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</b>\n");
-      out.write("                                <form action=\"ModificacionAdmin?tip=2&&id=");
+      out.write("                                <form action=\"ModificacionEmpleado?tip=2&&id=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoModificar.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\" method=\"POST\">\n");
       out.write("                                <div class=\"form-group\">\n");
@@ -342,16 +360,20 @@ public final class page_002dhome_002drecursos_002dhumanos_jsp extends org.apache
       out.write("                                    \n");
       out.write("                                    <label for=\"recipient-name\" class=\"col-form-label\">Tipo:</label>\n");
       out.write("                                    <select class=\"custom-select mr-sm-2\" id=\"inlineFormCustomSelect\" name=\"tipoempleado\" required>\n");
-      out.write("                                        <option selected value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoModificar.getTipo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write('"');
-      out.write('>');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empleadoModificar.getTipo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</option>\n");
-      out.write("                                        <option value=\"Gerente\">Gerente</option>\n");
-      out.write("                                        <option value=\"Recursos Humanos\">Recursos Humanos</option>\n");
-      out.write("                                        <option value=\"Administrador\">Administrador</option>\n");
-      out.write("                                      </select><br><br>\n");
+      out.write("                                        <option selected ></option>\n");
+      out.write("                                        ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                                      </select><br>\n");
+      out.write("                                      \n");
+      out.write("                                      <label for=\"recipient-name\" class=\"col-form-label\">Es Jefe:</label>\n");
+      out.write("                                    <select class=\"custom-select mr-sm-2\" id=\"inlineFormCustomSelect\" name=\"jefe\" required>\n");
+      out.write("                                        <option selected ></option>\n");
+      out.write("                                        <option value=\"1\">SI</option>\n");
+      out.write("                                        <option value=\"0\">NO</option>\n");
+      out.write("                                      </select><br>\n");
+      out.write("                                      \n");
       out.write("                                      <label for=\"recipient-name\" class=\"col-form-label\" >Fecha de Modificacion:</label>\n");
       out.write("                                      <input type=\"date\" name=\"fecha\" required/><br><br>\n");
       out.write("                                      \n");
@@ -410,15 +432,15 @@ int ids=0;
       out.write("\n");
       out.write("                ");
       //  c:forEach
-      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-      _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
-      _jspx_th_c_forEach_0.setParent(null);
-      _jspx_th_c_forEach_0.setVar("dato");
-      _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${datos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-      int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+      _jspx_th_c_forEach_2.setPageContext(_jspx_page_context);
+      _jspx_th_c_forEach_2.setParent(null);
+      _jspx_th_c_forEach_2.setVar("dato");
+      _jspx_th_c_forEach_2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${datos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+      int[] _jspx_push_body_count_c_forEach_2 = new int[] { 0 };
       try {
-        int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
-        if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        int _jspx_eval_c_forEach_2 = _jspx_th_c_forEach_2.doStartTag();
+        if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
           do {
             out.write("\n");
             out.write("                <tr>\n");
@@ -447,28 +469,28 @@ ids++;
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dato.getTipo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
             out.write("</td>\n");
             out.write("                    <td>\n");
-            out.write("                        <form action=\"?tip=1&&id=");
+            out.write("                        <form action=\"Salario?tip=1&&id=");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dato.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
             out.write("\" method=\"post\">\n");
             out.write("                            <input type=\"submit\" value=\"Cambio Salarial\" class=\"btn btn-primary\">\n");
             out.write("                        </form>\n");
             out.write("                    </td>\n");
             out.write("                    <td>\n");
-            out.write("                        <form action=\"?tip=1&&id=");
+            out.write("                        <form action=\"Despido?tip=1&&id=");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dato.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
             out.write("\" method=\"post\" >\n");
             out.write("                            <input type=\"submit\" value=\"Despedir\" class=\"btn btn-primary\">\n");
             out.write("                        </form>\n");
             out.write("                    </td>\n");
             out.write("                    <td>\n");
-            out.write("                        <form action=\"?tip=1&&id=");
+            out.write("                        <form action=\"Renuncia?tip=1&&id=");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dato.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
             out.write("\" method=\"POST\" >\n");
             out.write("                            <input type=\"submit\" value=\"Renuncia\" class=\"btn btn-primary\">\n");
             out.write("                        </form>\n");
             out.write("                    </td>\n");
             out.write("                    <td>\n");
-            out.write("                        <form action=\"?tip=1&&id=");
+            out.write("                        <form action=\"ModificacionEmpleado?tip=1&&id=");
             out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dato.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
             out.write("\" method=\"post\" >\n");
             out.write("                            <input type=\"submit\" value=\"Modificar\" class=\"btn btn-primary\">\n");
@@ -476,21 +498,21 @@ ids++;
             out.write("                    </td>\n");
             out.write("                </tr>\n");
             out.write("                ");
-            int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+            int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
             if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
               break;
           } while (true);
         }
-        if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        if (_jspx_th_c_forEach_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
           return;
         }
       } catch (Throwable _jspx_exception) {
-        while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        while (_jspx_push_body_count_c_forEach_2[0]-- > 0)
           out = _jspx_page_context.popBody();
-        _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+        _jspx_th_c_forEach_2.doCatch(_jspx_exception);
       } finally {
-        _jspx_th_c_forEach_0.doFinally();
-        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+        _jspx_th_c_forEach_2.doFinally();
+        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_2);
       }
       out.write("\n");
       out.write("            </tbody>\n");
@@ -508,6 +530,48 @@ ids++;
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setVar("area");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${objetoarea}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                        <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${area}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${area}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option>\n");
+          out.write("                                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
   }
 
   private boolean _jspx_meth_c_set_0(PageContext _jspx_page_context)
@@ -583,6 +647,48 @@ ids++;
       return true;
     }
     _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setVar("area");
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${objetoarea}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                        <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${area}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${area}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option>\n");
+          out.write("                                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
     return false;
   }
 

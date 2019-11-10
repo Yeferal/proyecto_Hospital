@@ -1,0 +1,125 @@
+<!-- Modal agregar tarifario -->
+                        <div class="modal fade" id="exampleModaln" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Tarifario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="TarifarioRecHumanos" method="POST">
+                                <div class="form-group">
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Tipo de Operacion:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="nombreTipo" placeholder="Nombre" required><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Precio de la Operacion:</label>
+                                    <input type="number" step="0.01" name="precio" required/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label">Costo de la Operacion:</label>
+                                    <input type="number" step="0.01" name="costo" required/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Cuota de Especialista:</label>
+                                    <input type="number" step="0.01" name="cuota" required/><br>
+                                    
+                                    <input type="submit" value="Agregar">
+                                    
+                                    </div>
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+<!-- Modal eliminar tarifario -->
+                        <c:set var="tarifario" value="${objetoTarifario}"></c:set>
+                        <div class="modal fade" id="exampleModalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Tarifario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                 Desea eliminar a: ${tarifario.getTipo()}
+                                <form action="?tip=1&&id=${tarifario.getId()}" method="POST">
+                                <div class="form-group">
+                                    <input type="submit" value="Eliminar">
+                                    
+                                    </div>
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+<!-- Modal modificar tarifario -->
+                        <c:set var="tarifario" value="${objetoTarifario}"></c:set>
+                        <div class="modal fade" id="exampleModalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Tarifario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="?tip=3&&id=${tarifario.getId()}" method="POST">
+                                <div class="form-group">
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Tipo de Operacion:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="nombreTipo" value="${tarifario.getTipo()}" placeholder="Nombre" required><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Precio de la Operacion:</label>
+                                    <input type="number" step="0.01" name="precio" value="${tarifario.getPrecio()}" required /><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label">Costo de la Operacion:</label>
+                                    <input type="number" step="0.01" name="costo" value="${tarifario.getCosto()}" required/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Cuota de Especialista:</label>
+                                    <input type="number" step="0.01" name="cuota" value="${tarifario.getCuota()}" required/><br>
+                                    
+                                    <input type="submit" value="Modificar">
+                                    
+                                    </div>
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
+                        <c:if test="${requestScope['activo1'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalEliminar').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo2'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalModificar').modal('show');
+                            });
+                    </script>
+                </c:if>

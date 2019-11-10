@@ -1,0 +1,22 @@
+SMAP
+page_002dasignar_002dpagos_002drec_002dhum_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-asignar-pagos-rec-hum.jsp
+page-asignar-pagos-rec-hum.jsp
++ 1 header.html
+header.html
++ 2 navegacion-recursos-humanos.html
+navegacion-recursos-humanos.html
++ 3 modal-pagos.html
+modal-pagos.html
+*L
+5,9:51
+1#1,8:60
+13#0,5:67
+1#2,12:72
+17#0,14:83
+1#3,87:97
+30#0,4:184
+*E

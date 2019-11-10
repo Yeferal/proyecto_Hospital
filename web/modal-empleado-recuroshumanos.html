@@ -78,7 +78,7 @@
                               </div>
                               <div class="modal-body">
                                   Cambiar el salario del empleado: <b>${empleadoSalario.getNombre()}</b>
-                                <form action="SalarioAdmin?tip=2&&id=${empleadoSalario.getId()}" method="POST">
+                                <form action="Salario?tip=2&&id=${empleadoSalario.getId()}" method="POST">
                                 <div class="form-group">
                                     salario actual: ${empleadoSalario.getSalario()}<br><br>
                                     <label for="recipient-name" class="col-form-label" >Salario Nuevo:</label>
@@ -114,7 +114,7 @@
                               </div>
                               <div class="modal-body">
                                   Confirma el Despido del empleado: <b>${empleadoDespido.getNombre()}</b>
-                                <form action="DespidoAdmin?tip=2&&id=${empleadoDespido.getId()}" method="POST">
+                                <form action="Despido?tip=2&&id=${empleadoDespido.getId()}" method="POST">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label" >Fecha de Despido:</label>
                                     <input type="date" name="fecha" required/><br><br>
@@ -146,7 +146,7 @@
                               </div>
                               <div class="modal-body">
                                   Confirma la renuncia del empleado: <b>${empleadoRenuncia.getNombre()}</b>
-                                <form action="RegistroRenuncia?tip=2&&id=${empleadoRenuncia.getId()}" method="POST">
+                                <form action="Renuncia?tip=2&&id=${empleadoRenuncia.getId()}" method="POST">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label" >Fecha de Renuncia:</label>
                                     <input type="date" name="fecha" required/><br><br>
@@ -178,7 +178,7 @@
                               </div>
                               <div class="modal-body">
                                   Modificar al Empleado: <b>${empleadoModificar.getNombre()}</b>
-                                <form action="ModificacionAdmin?tip=2&&id=${empleadoModificar.getId()}" method="POST">
+                                <form action="ModificacionEmpleado?tip=2&&id=${empleadoModificar.getId()}" method="POST">
                                 <div class="form-group">
                                     
                                     <label for="recipient-name" class="col-form-label" >Nombre del Empleado:</label>
