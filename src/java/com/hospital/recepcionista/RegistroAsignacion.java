@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class RegistroAsignacion extends Conexion{
 
 
-
+    /*inserta la asignaciones para el paciente nuevo*/
     public void insertarAsignacion(Paciente paciente,int idMedico, int idEnfemero){
         conectar();
         try {
@@ -25,11 +25,9 @@ public class RegistroAsignacion extends Conexion{
         
     }
     
-    
-    
-    
+    /*asigna el medico para le paciente inserta el registro de este*/
     public void asiganaMedico(Paciente paciente,int id) throws SQLException{
-        
+        conectar();
         insertar = conect.prepareStatement(INSERT+asignacion+"(id_paciente,nombre_paciente,id_empleado,nombre_empleado,tipo) "+VALUES+"(?,?,?,?,?);");
         insertar.setInt(1, paciente.getId());
         insertar.setString(2, paciente.getNombre());
@@ -38,9 +36,9 @@ public class RegistroAsignacion extends Conexion{
         insertar.setString(5, "Medico");
         insertar.executeUpdate();
     }
-    
+    /*asigna el enfermero para le paciente inserta el registro de este*/
     public void asiganaEnfermero(Paciente paciente,int id) throws SQLException{
-        
+        conectar();
         insertar = conect.prepareStatement(INSERT+asignacion+"(id_paciente,nombre_paciente,id_empleado,nombre_empleado,tipo) "+VALUES+"(?,?,?,?,?);");
         insertar.setInt(1, paciente.getId());
         insertar.setString(2, paciente.getNombre());
@@ -52,7 +50,7 @@ public class RegistroAsignacion extends Conexion{
     }
     
     
-    
+    /*muiestro el nombre del empelado*/
     private String getNombreEmpleado(int id) throws SQLException{
         
         stmt = conect.createStatement();
@@ -61,4 +59,24 @@ public class RegistroAsignacion extends Conexion{
         
         return resultado.getString(1);
     }
+    /*retorna el paciente con la busqueda de su id en la DB*/
+    public Paciente getPaciente(int id){
+        Paciente p= null;
+        conectar();
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+paciente+WHERE+"id="+id+";");
+            resultado.next();
+            p = new Paciente(resultado.getInt(5), resultado.getInt(6), resultado.getString(2),resultado.getString(3) , resultado.getString(4), resultado.getString(7));
+            p.setId(resultado.getInt(1));
+            
+            
+            desconectar();
+        } catch (SQLException e) {
+        }
+        
+        
+        return p;
+    }
+    
 }

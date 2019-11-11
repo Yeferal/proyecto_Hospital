@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RenunciaAdmin extends HttpServlet {
 
     RegistroRenuncia registro = new RegistroRenuncia();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     ListaAdministracion lista = new ListaAdministracion();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

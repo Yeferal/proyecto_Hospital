@@ -65,8 +65,7 @@ public class AreaAdmin extends HttpServlet {
                 break;
             case 1:
                 {
-                    Area area = new Area();
-                    area.setNombre(request.getParameter("nombres"));
+                    Area area = new Area(request.getParameter("nombres"));
                     area.setId(Integer.parseInt(request.getParameter("id")));
                     request.setAttribute("objetoarea", area);
                     request.setAttribute("activo2", 1);
@@ -79,8 +78,7 @@ public class AreaAdmin extends HttpServlet {
                 break;
             case 5:
                 {
-                    Area area = new Area();
-                    area.setNombre(request.getParameter("nombres"));
+                    Area area = new Area(request.getParameter("nombres"));
                     area.setId(Integer.parseInt(request.getParameter("id")));
                     request.setAttribute("objeto", area);
                     request.setAttribute("activo1", 1);

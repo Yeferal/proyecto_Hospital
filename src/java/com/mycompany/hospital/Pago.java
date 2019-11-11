@@ -6,6 +6,16 @@ public class Pago {
     private String nombreEmpleado, cuiEmpleado, tipo, nombreGerente,fecha;
     private double pago;
     
+    public Pago(String nombreEmpleado,String cuiEmpleado,String fecha,String tipo,int idGerente,String nombreGerente,double pago){
+        this.nombreEmpleado = nombreEmpleado;
+        this.cuiEmpleado = cuiEmpleado;
+        this.fecha = fecha;
+        this.tipo = tipo;
+        this.idGerente = idGerente;
+        this.nombreGerente = nombreGerente;
+        this.pago = pago;
+    }
+    
     
     public void setId(int id){
         this.id = id;

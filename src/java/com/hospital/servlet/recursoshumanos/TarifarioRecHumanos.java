@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "TarifarioRecHumanos", urlPatterns = {"/TarifarioRecHumanos"})
 public class TarifarioRecHumanos extends HttpServlet {
 
-    Tarifa t = new Tarifa();
+    Tarifa t = null;
     ListaRecursosHumanos lista = new ListaRecursosHumanos();
     RegistroTarifario registro = new RegistroTarifario();
 
@@ -47,10 +47,7 @@ public class TarifarioRecHumanos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            t.setTipo(request.getParameter("nombreTipo"));
-            t.setPrecio(Double.parseDouble(request.getParameter("precio")));
-            t.setCosto(Double.parseDouble(request.getParameter("costo")));
-            t.setCuota(Double.parseDouble(request.getParameter("cuota")));
+            t = new Tarifa(request.getParameter("nombreTipo"), Double.parseDouble(request.getParameter("precio")), Double.parseDouble(request.getParameter("costo")), Double.parseDouble(request.getParameter("cuota")));
             
             registro.insertarTarifa(t);
             

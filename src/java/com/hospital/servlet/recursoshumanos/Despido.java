@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Despido extends HttpServlet {
 
     RegistroDespido registro = new RegistroDespido();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     ListaRecursosHumanos lista = new ListaRecursosHumanos();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

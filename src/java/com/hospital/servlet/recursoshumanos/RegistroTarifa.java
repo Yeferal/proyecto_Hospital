@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistroTarifa extends HttpServlet {
 
     RegistroTarifario registro = new RegistroTarifario();
-    Tarifa t = new Tarifa();
+    Tarifa t = null;
     ListaRecursosHumanos lista = new ListaRecursosHumanos();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -63,7 +63,7 @@ public class RegistroTarifa extends HttpServlet {
     }
     
     private void redireccionar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        t=registro.getTarifa(Integer.parseInt(request.getParameter("id")));
+        t = registro.getTarifa(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("objetoTarifario", t);
         request.setAttribute("datos", lista.listarTarifas());
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-tarifario-rec-hum.jsp");
@@ -79,11 +79,8 @@ public class RegistroTarifa extends HttpServlet {
         dispatcher.forward(request, response);
     }
     private void enviarModificacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        t = new Tarifa(request.getParameter("nombreTipo"), Double.parseDouble(request.getParameter("precio")), Double.parseDouble(request.getParameter("costo")), Double.parseDouble(request.getParameter("cuota")));
         t.setId(Integer.parseInt(request.getParameter("id")));
-        t.setTipo(request.getParameter("nombreTipo"));
-        t.setPrecio(Double.parseDouble(request.getParameter("precio")));
-        t.setCosto(Double.parseDouble(request.getParameter("costo")));
-        t.setCuota(Double.parseDouble(request.getParameter("cuota")));
         
         registro.modificarTarifa(t);
         

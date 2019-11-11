@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class ListaAdministracion extends Conexion{
     
     
-    
+    /*Hace una lsita de las area que se encuentran en la base de datos*/
     public List listarAreas(){
         
         List<Area> lista = new ArrayList<>();
@@ -28,9 +28,8 @@ public class ListaAdministracion extends Conexion{
             resultado = stmt.executeQuery(SELECT+"* "+FROM+areas);
             
             while (resultado.next()) {    
-                area=new Area();
+                area=new Area(resultado.getString(2));
                 area.setId(resultado.getInt(1));
-                area.setNombre(resultado.getString(2));
                 
                 lista.add(area);
             }
@@ -42,7 +41,7 @@ public class ListaAdministracion extends Conexion{
        
         return lista;
     }
-    
+    /*Hace una lista de la habitaciones*/
     public List listarHabitaciones(){
         List<Habitacion> lista = new ArrayList<>();
         Habitacion habitaciones = null;
@@ -55,12 +54,9 @@ public class ListaAdministracion extends Conexion{
             resultado = stmt.executeQuery(SELECT+"* "+FROM+habitacion);
             
             while (resultado.next()) {    
-                habitaciones= new Habitacion();
+                habitaciones= new Habitacion(resultado.getInt(3),resultado.getDouble(4),resultado.getDouble(5));
                 habitaciones.setId(resultado.getInt(1));
                 habitaciones.setPaciente(resultado.getInt(2));
-                habitaciones.setEstado(resultado.getInt(3));
-                habitaciones.setCosto(resultado.getDouble(4));
-                habitaciones.setCuota(resultado.getDouble(5));
                 
                 lista.add(habitaciones);
             }
@@ -73,7 +69,7 @@ public class ListaAdministracion extends Conexion{
         return lista;
     }
     
-    
+    /*Hace una lista de los empleados de administracion*/
     public List listarEmpleadosAdministracion(){
             List<Usuario> lista = new ArrayList<>();
         Usuario usuario = null;
@@ -86,10 +82,8 @@ public class ListaAdministracion extends Conexion{
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"tipo='Administrador' OR tipo='Recursos Humanos' OR tipo='Gerente';");
             
             while (resultado.next()) {    
-                usuario = new Usuario();
+                usuario = new Usuario(resultado.getString(2),resultado.getString(3));
                 usuario.setId(resultado.getInt(1));
-                usuario.setNombre(resultado.getString(2));
-                usuario.setCui(resultado.getString(3));
                 usuario.setCodigo(resultado.getString(4));
                 usuario.setIrtra(resultado.getDouble(5));
                 usuario.setIgss(resultado.getDouble(6));

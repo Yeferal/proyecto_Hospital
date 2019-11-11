@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ModificacionEmpleado extends HttpServlet {
 
     ListaRecursosHumanos lista = new ListaRecursosHumanos();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     RegistroModificacionEmpleado registro = new RegistroModificacionEmpleado();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

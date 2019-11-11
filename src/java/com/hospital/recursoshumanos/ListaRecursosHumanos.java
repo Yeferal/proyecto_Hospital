@@ -16,7 +16,7 @@ import java.util.List;
 public class ListaRecursosHumanos extends Conexion{
     
     
-    
+    /*retorna un listado de los empleados de recursos humanos*/
     public List listarEmpleadosRecursosHumanos(){
             List<Usuario> lista = new ArrayList<>();
         Usuario usuario = null;
@@ -29,10 +29,8 @@ public class ListaRecursosHumanos extends Conexion{
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"tipo<>'Administrador' AND tipo<>'Recursos Humanos' AND tipo<>'Gerente';");
             
             while (resultado.next()) {    
-                usuario = new Usuario();
+                usuario = new Usuario(resultado.getString(2),resultado.getString(3));
                 usuario.setId(resultado.getInt(1));
-                usuario.setNombre(resultado.getString(2));
-                usuario.setCui(resultado.getString(3));
                 usuario.setCodigo(resultado.getString(4));
                 usuario.setIrtra(resultado.getDouble(5));
                 usuario.setIgss(resultado.getDouble(6));
@@ -50,7 +48,7 @@ public class ListaRecursosHumanos extends Conexion{
        
         return lista;
     }
-    
+    /*retorna un listado de las area de la DB*/
     public List listarAreas(){
         List<String> lista = new ArrayList<>();
         conectar();
@@ -74,7 +72,7 @@ public class ListaRecursosHumanos extends Conexion{
         return lista;
         
     }
-    
+    /*retorna un lsitado de especialistas*/
     public List listarEspecialistas(){
         List<Usuario> lista = new ArrayList<>();
         Usuario usuario = null;
@@ -84,10 +82,8 @@ public class ListaRecursosHumanos extends Conexion{
             resultado = stmt.executeQuery(SELECT+"* "+FROM+especialistas+";");
             
             while (resultado.next()) {    
-                usuario = new Usuario();
+                usuario = new Usuario(resultado.getString(2),resultado.getString(3));
                 usuario.setId(resultado.getInt(1));
-                usuario.setNombre(resultado.getString(2));
-                usuario.setCui(resultado.getString(3));
                 
                 lista.add(usuario);
             }
@@ -99,7 +95,7 @@ public class ListaRecursosHumanos extends Conexion{
        
         return lista;
     }
-    
+    /*retorna un listado de tarifas de la DB*/
     public List listarTarifas(){
         List<Tarifa> lista = new ArrayList<>();
         Tarifa tarifa = null;
@@ -109,12 +105,8 @@ public class ListaRecursosHumanos extends Conexion{
             resultado = stmt.executeQuery(SELECT+"* "+FROM+tarifario+";");
             
             while (resultado.next()) {    
-                tarifa = new Tarifa();
+                tarifa = new Tarifa(resultado.getString(2),resultado.getDouble(3),resultado.getDouble(4),resultado.getDouble(5));
                 tarifa.setId(resultado.getInt(1));
-                tarifa.setTipo(resultado.getString(2));
-                tarifa.setPrecio(resultado.getDouble(3));
-                tarifa.setCosto(resultado.getDouble(4));
-                tarifa.setCuota(resultado.getDouble(5));
                 
                 lista.add(tarifa);
             }

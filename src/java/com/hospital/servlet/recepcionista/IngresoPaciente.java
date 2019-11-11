@@ -18,7 +18,7 @@ public class IngresoPaciente extends HttpServlet {
 
     RegistroAsignacion registroA = new RegistroAsignacion();
     RegistroPaciente registroP = new RegistroPaciente();
-    Paciente p = new Paciente();
+    Paciente p = null;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -43,7 +43,8 @@ public class IngresoPaciente extends HttpServlet {
         int habitacion = Integer.parseInt(request.getParameter("habitacion"));
         String fechaIngreso = request.getParameter("fechaIngreso");
         
-        p.setDatos(0, edad, habitacion, nombre, cui, fechaNacimiento, fechaIngreso);
+        p = new Paciente( edad, habitacion, nombre, cui, fechaNacimiento, fechaIngreso);
+        p.setId(0);
         
         registroP.insertarPaciente(p);
         

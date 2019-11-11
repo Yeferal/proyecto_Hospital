@@ -27,7 +27,7 @@ public class HabitacionAdmin extends HttpServlet {
 
     ListaAdministracion lista = new ListaAdministracion();
     AdministracionHabitacion adminHabitacion = new AdministracionHabitacion();
-    Habitacion h = new Habitacion();
+    Habitacion h = null;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -63,6 +63,7 @@ public class HabitacionAdmin extends HttpServlet {
                 enviarRegistro(request, response);
                 break;
             case 2:
+                h = new Habitacion(0,0,0);
                 h.setId(Integer.parseInt(request.getParameter("id")));
                 request.setAttribute("objetohabitacioneliminar", h);
                 request.setAttribute("activo1", 1);
@@ -88,11 +89,9 @@ public class HabitacionAdmin extends HttpServlet {
     }
     
     private void enviarRegistro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        h = new Habitacion(Integer.parseInt(request.getParameter("estadoH")),Double.parseDouble(request.getParameter("costo")),Double.parseDouble(request.getParameter("cuota")));
         
-        h.setEstado(Integer.parseInt(request.getParameter("estadoH")));
-        h.setCosto(Double.parseDouble(request.getParameter("costo")));
-        h.setCuota(Double.parseDouble(request.getParameter("cuota")));
-        System.out.println(h.getEstadoTexto());
+        
         adminHabitacion.insertarHabitacion(h);
         
         direccionar(request, response);
@@ -100,11 +99,9 @@ public class HabitacionAdmin extends HttpServlet {
     }
     
     public void enviarModificacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        
-        h.setEstado(Integer.parseInt(request.getParameter("estadoH")));
-        h.setCosto(Double.parseDouble(request.getParameter("costo")));
-        h.setCuota(Double.parseDouble(request.getParameter("cuota")));
-        System.out.println(h.getEstadoTexto());
+        h = new Habitacion(Integer.parseInt(request.getParameter("estadoH")),Double.parseDouble(request.getParameter("costo")),Double.parseDouble(request.getParameter("cuota")));
+        int id = Integer.parseInt(request.getParameter("id"));
+        h.setId(id);
         adminHabitacion.modificarHabitacion(h);
         ServletOutputStream stream1 = response.getOutputStream();
                 stream1.print("<html><head></head><body onload=\"alert('Se Modifico la Habitacion'); window.location='HabitacionAdmin' \"></body></html>");

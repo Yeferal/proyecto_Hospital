@@ -10,8 +10,7 @@ public class Paciente {
     private List<String> medicos = new ArrayList<>();
     private List<String> enfermeros = new ArrayList<>();
     
-    public void setDatos(int id,int edad, int habitacion,String nombre,String cui, String fechaNacimiento, String fechaIngreso){
-        this.id = id;
+    public Paciente(int edad, int habitacion,String nombre,String cui, String fechaNacimiento, String fechaIngreso){
         this.edad = edad;
         this.habitacion = habitacion;
         this.nombre =nombre;

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ListaRecepcion extends Conexion{
     
-    
+    /*retorna un listado de medicos*/
     public List listarMedicos(){
         List<Usuario> lista = new ArrayList<>();
         Usuario u=null;
@@ -21,9 +21,8 @@ public class ListaRecepcion extends Conexion{
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"tipo='Medico';");
             while (resultado.next()) {
-                u = new Usuario();                
+                u = new Usuario(resultado.getString(2),"");                
                 u.setId(resultado.getInt(1));
-                u.setNombre(resultado.getString(2));
                 
                 lista.add(u);
             }
@@ -32,7 +31,7 @@ public class ListaRecepcion extends Conexion{
         }
         return lista;
     }
-    
+    /*retorna un listado de enfermeros*/
     public List listarEnfermeros(){
         List<Usuario> lista = new ArrayList<>();
         Usuario u=null;
@@ -41,9 +40,8 @@ public class ListaRecepcion extends Conexion{
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"tipo='Enfermeria';");
             while (resultado.next()) {                
-                u = new Usuario();
+                u = new Usuario(resultado.getString(2),"");                
                 u.setId(resultado.getInt(1));
-                u.setNombre(resultado.getString(2));
                 
                 lista.add(u);
             }
@@ -52,7 +50,7 @@ public class ListaRecepcion extends Conexion{
         }
         return lista;
     }
-    
+    /*retorna un listado de pacieintes*/
     public List listarPacientes(){
         List<Paciente> lista = new ArrayList<>();
         Paciente p=null;
@@ -61,8 +59,8 @@ public class ListaRecepcion extends Conexion{
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+paciente+";");
             while (resultado.next()) { 
-                p = new Paciente();
-                p.setDatos(resultado.getInt(1), resultado.getInt(5), resultado.getInt(6), resultado.getString(2), resultado.getString(3), resultado.getString(4),resultado.getString(7));
+                p = new Paciente(resultado.getInt(5), resultado.getInt(6), resultado.getString(2), resultado.getString(3), resultado.getString(4),resultado.getString(7));
+                p.setId(resultado.getInt(1));
                 p.setListaMedicos(listarMedicosPaciente(p.getId()));
                 p.setListaEnfermeros(listarEnfermerosPaciente(p.getId()));
                 
@@ -73,7 +71,7 @@ public class ListaRecepcion extends Conexion{
         }
         return lista;
     }
-    
+    /*retorna una lista de habitaciones disponibles*/
     public List listarHabitacionesDisponibles(){
         List<Integer> lista = new ArrayList<>();
         conectar();
@@ -89,7 +87,7 @@ public class ListaRecepcion extends Conexion{
         }
         return lista;
     }
-    
+    /*retorna un listado de medicos por paciente*/
     public List listarMedicosPaciente(int id){
         List<String> lista = new ArrayList<>();
         try {
@@ -103,7 +101,7 @@ public class ListaRecepcion extends Conexion{
         }
         return lista;
     }
-    
+    /*retorna un listado de los enfermeros por paciente*/
     public List listarEnfermerosPaciente(int id){
         List<String> lista = new ArrayList<>();
         try {

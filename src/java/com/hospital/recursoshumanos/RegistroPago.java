@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class RegistroPago extends Conexion{
     
-    
+    /*inserta un pago en la DB*/
     public void insertarPago(Pago pago){
         conectar();
         System.out.println("entro");
@@ -31,48 +31,46 @@ public class RegistroPago extends Conexion{
             e.printStackTrace();
         }
     }
-    
+    /*retorna un empleado*/
     public Usuario getUsuario(int id){
-        Usuario usuario= new Usuario();
+        Usuario usuario= null;
         conectar();
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"id="+id+";");
             resultado.next();
+            usuario = new Usuario(resultado.getString(2),resultado.getString(3));
             usuario.setId(resultado.getInt(1));
-            usuario.setNombre(resultado.getString(2));
-            usuario.setCui(resultado.getString(3));
             desconectar();
         } catch (SQLException e) {
         }
         return usuario;
     }
-    
+    /*retorna una empleado*/
     public Usuario getEmpleado(int id){
-        Usuario usuario= new Usuario();
+        Usuario usuario= null;
         conectar();
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"id="+id+";");
             resultado.next();
+            usuario = new Usuario(resultado.getString(2),resultado.getString(3));
             usuario.setId(resultado.getInt(1));
-            usuario.setNombre(resultado.getString(2));
-            usuario.setCui(resultado.getString(3));
             desconectar();
         } catch (SQLException e) {
         }
         return usuario;
     }
+    /*retorna a un especialista*/
     public Usuario getEspecialista(int id){
-        Usuario usuario= new Usuario();
+        Usuario usuario= null;
         conectar();
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+especialistas+WHERE+"id="+id+";");
             resultado.next();
+            usuario = new Usuario(resultado.getString(2),resultado.getString(3));
             usuario.setId(resultado.getInt(1));
-            usuario.setNombre(resultado.getString(2));
-            usuario.setCui(resultado.getString(3));
             desconectar();
         } catch (SQLException e) {
         }

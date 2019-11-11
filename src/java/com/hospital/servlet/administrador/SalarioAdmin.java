@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SalarioAdmin extends HttpServlet {
 
     RegistroSalario registro = new RegistroSalario();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     ListaAdministracion lista = new ListaAdministracion();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

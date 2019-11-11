@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class RegistroPaciente extends Conexion{
     
     
-    
+    /*inserta un paciente en la DB*/
     public void insertarPaciente(Paciente paciente){
         conectar();
         try {
@@ -32,7 +32,7 @@ public class RegistroPaciente extends Conexion{
             e.printStackTrace();
         }
     }
-    
+    /*Inserta el historial del Paciente*/
     public void insertarHistorialMedico(Paciente paciente){
         try {
             insertar = conect.prepareStatement(INSERT+historialMedico+"(id_paciente,descripcion,fecha,tipo,total) "+VALUES+"(?,?,?,?,?);");
@@ -50,6 +50,7 @@ public class RegistroPaciente extends Conexion{
         
         
     }
+    /*inserta la habitacion que usara el paciente*/
     private void insertarHabitacion(int id) throws SQLException{
         insertar = conect.prepareStatement(UPDATE+habitacion+SET+"paciente=1 "+WHERE+"id="+id+";");
             
@@ -57,7 +58,7 @@ public class RegistroPaciente extends Conexion{
     }
     
     
-    
+    /*retorna el id del ultimo paciente agregado*/
     public int getIdUltimoUsuario(){
         conectar();
         int id = 0;

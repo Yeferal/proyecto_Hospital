@@ -7,6 +7,10 @@ public class Area {
     private int id;
     private String nombre;
     
+    public Area(String nombre){
+        this.nombre = nombre;
+    }
+    
     public void setId(int id){
         this.id = id;
     }

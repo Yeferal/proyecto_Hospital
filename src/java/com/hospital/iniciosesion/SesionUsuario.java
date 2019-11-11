@@ -10,8 +10,9 @@ import java.util.logging.Logger;
 
 public class SesionUsuario extends Conexion{
     
-    Usuario usuario = new Usuario();
+    Usuario usuario = new Usuario("","");
     
+    /*verifiacar si el usuario existe con su cui en la DB*/
     public boolean isExisteUsuario(String cui){
         conectar();
         try {
@@ -29,6 +30,7 @@ public class SesionUsuario extends Conexion{
         return false;
     }
 
+    /*verifica si el codigo o password es el correcto*/
     public boolean isPasswordUsuario(String cui,String pass){
         conectar();
         try {
@@ -46,7 +48,7 @@ public class SesionUsuario extends Conexion{
         desconectar();
         return false;
     }
-    
+    /*hace un set para el usuario y lo retorna*/
     public Usuario setUsuario(String cui,String pass){
         conectar();
         try {

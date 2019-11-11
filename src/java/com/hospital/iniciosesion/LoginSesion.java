@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "LoginSesion", urlPatterns = {"/LoginSesion"})
 public class LoginSesion extends HttpServlet {
 
-    Usuario usuario = new Usuario();
+    Usuario usuario = new Usuario("","");
     SesionUsuario sesion = new SesionUsuario();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -10,7 +10,7 @@ public class RegistroSalario extends Conexion{
     
     
     
-    
+    /*Cambia el salario del empleado se conecta a la base de datos para esto*/
     public void cambiarSalarioEmpleado(Usuario usuario, String tipoRegistro, String fecha){
         conectar();
         
@@ -19,14 +19,14 @@ public class RegistroSalario extends Conexion{
             insertar = conect.prepareStatement(UPDATE+empleado+SET+"salario="+usuario.getSalario()+" "+WHERE+"id="+usuario.getId()+";");
             insertar.executeUpdate();
             
-            
+            //envia la insercion en el historial laboral
             insertarHistorialSalario(usuario, tipoRegistro, fecha);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
     
-    
+    /*Inserta los datos o accion en el historial laboral para determinado usuario*/
     public void insertarHistorialSalario(Usuario usuario, String tipoRegistro, String fecha){
         
         try {
@@ -48,17 +48,16 @@ public class RegistroSalario extends Conexion{
         
     }
     
-    
+    /*Retorna un objeto tipo usuario con sus datos obtenidos de la base de datos*/
     public Usuario getUsuario(int id){
-        Usuario u = new Usuario();
+        Usuario u = null;
         conectar();
         try {
             stmt=conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"id="+id+";");
             resultado.next();
+            u =new Usuario(resultado.getString(2),resultado.getString(3));
             u.setId(resultado.getInt(1));
-            u.setNombre(resultado.getString(2));
-            u.setCui(resultado.getString(3));
             u.setCodigo(resultado.getString(4));
             u.setIrtra(resultado.getDouble(5));
             u.setIgss(resultado.getDouble(6));

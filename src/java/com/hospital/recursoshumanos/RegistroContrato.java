@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class RegistroContrato extends  Conexion{
     
-    
+    /*verifica la existencia de un contrato*/
     public boolean verificarContrato(String cui){
         conectar();
         try {
@@ -35,7 +35,7 @@ public class RegistroContrato extends  Conexion{
         return false;
     }
     
-    
+    /*verifica la existencia de un empleado*/
     public boolean verificarEmpleadoExistente(String cui){
         
         try {
@@ -52,7 +52,7 @@ public class RegistroContrato extends  Conexion{
         return false;
     }
     
-    
+    /*inserta el contrato de un empleado en la DB*/
     public void insertarContratoEmpleado(Usuario usuario, String tipoRegistro, String fecha){
         conectar();
         try {
@@ -80,7 +80,7 @@ public class RegistroContrato extends  Conexion{
         
     }
     
-    
+    /*inserta el registro en el historial laboral de la DB*/
     public void insertaHistorial(Usuario usuario,String tipoRegistro, String fecha){
         
         

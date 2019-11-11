@@ -8,6 +8,14 @@ public class Tarifa {
     private String tipo;
     private double precio,costo,cuota;
 
+    public Tarifa(String tipo,double precio,double costo,double cuota){
+        this.tipo = tipo;
+        this.precio = precio;
+        this.costo = costo;
+        this.cuota =  cuota;
+    }
+    
+    
     public void setId(int id){
         this.id = id;
     }

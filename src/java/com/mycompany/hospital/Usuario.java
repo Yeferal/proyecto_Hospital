@@ -15,8 +15,9 @@ public class Usuario {
     private String tipo;
     private int jefe;
     
-    public Usuario(){
-        
+    public Usuario(String nombre,String cui){
+        this.nombre = nombre;
+        this.cui = cui;
     }
     
     public void setId(int id){

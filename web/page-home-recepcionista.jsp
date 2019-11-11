@@ -48,15 +48,15 @@
                         <td>${dato.getHabitacion()}</td>
                         <td>${dato.getFechaIngreso()}</td>
                         <td>
-                            <form action="#" method="POST">
+                            <form action="AsignacionPaciente?tip=1&&id=${dato.getId()}" method="POST">
                                 <input type="submit" value="Asignar Medico" class="btn btn-primary">
                             </form>
-                            <form action="#" method="POST">
+                            <form action="AsignacionPaciente?tip=3&&id=${dato.getId()}" method="POST">
                                 <input type="submit" value="Asignar Enfermero" class="btn btn-primary">
                             </form>
                         </td>
                         <td>
-                            <form action="#" method="POST">
+                            <form action="" method="POST">
                                 <input type="submit" value="Desasignar Medico" class="btn btn-primary">
                             </form>
                             <form action="#" method="POST">

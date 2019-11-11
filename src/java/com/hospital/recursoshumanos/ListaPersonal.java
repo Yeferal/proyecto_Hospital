@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ListaPersonal extends Conexion{
     
-    
+    /*retorna un listado de los especialistas*/
     public List listarEspecialistas(){
         conectar();
         List<Usuario> lista = new ArrayList<>();
@@ -20,10 +20,8 @@ public class ListaPersonal extends Conexion{
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+especialistas+";");
             while (resultado.next()) {                
-                u = new Usuario();
+                u = new Usuario(resultado.getString(2),resultado.getString(3));
                 u.setId(resultado.getInt(1));
-                u.setNombre(resultado.getString(2));
-                u.setCui(resultado.getString(3));
                 
                 lista.add(u);
             }
@@ -33,7 +31,7 @@ public class ListaPersonal extends Conexion{
         
         return lista;
     }
-    
+    /*retorna un listado de empleados*/
     public List listarEmpleados(){
         conectar();
         List<Usuario> lista = new ArrayList<>();
@@ -42,10 +40,8 @@ public class ListaPersonal extends Conexion{
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+";");
             while (resultado.next()) {                
-                u = new Usuario();
+                u = new Usuario(resultado.getString(2),resultado.getString(3));
                 u.setId(resultado.getInt(1));
-                u.setNombre(resultado.getString(2));
-                u.setCui(resultado.getString(3));
                 u.setSalario(resultado.getDouble(7));
                 
                 lista.add(u);
@@ -56,7 +52,7 @@ public class ListaPersonal extends Conexion{
         
         return lista;
     }
-    
+    /*retorna un listado de pagos*/
     public List listarPagos(){
         conectar();
         List<Pago> lista = new ArrayList<>();
@@ -65,13 +61,8 @@ public class ListaPersonal extends Conexion{
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+pagos+"order by fecha;");
             while (resultado.next()) {                
-                p = new Pago();
+                p = new Pago(resultado.getString(2),"0",resultado.getString(4),resultado.getString(5),0,resultado.getString(7),resultado.getDouble(8));
                 p.setId(resultado.getInt(1));
-                p.setNombreEmpleado(resultado.getString(2));
-                p.setNombreGerente(resultado.getString(7));
-                p.setTipo(resultado.getString(5));
-                p.setFecha(resultado.getString(4));
-                p.setPago(resultado.getDouble(8));
                 
                 lista.add(p);
             }

@@ -1,16 +1,17 @@
                 <c:if test="${requestScope['activo1'] != null}">
                     <script type="text/javascript">
                             $(document).ready(function () {
-                                $('#exampleModalcambiosalarial').modal('show');
+                                $('#exampleModalMedico').modal('show');
                             });
                     </script>
                 </c:if>
                 <c:if test="${requestScope['activo2'] != null}">
                     <script type="text/javascript">
                             $(document).ready(function () {
-                                $('#exampleModaldespedir').modal('show');
+                                $('#exampleModalEnfermero').modal('show');
                             });
                     </script>
+                    
                 </c:if>
                 <c:if test="${requestScope['activo3'] != null}">
                     <script type="text/javascript">

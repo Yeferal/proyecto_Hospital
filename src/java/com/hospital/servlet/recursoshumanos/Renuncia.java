@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Renuncia extends HttpServlet {
 
     RegistroRenuncia registro = new RegistroRenuncia();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     ListaRecursosHumanos lista = new ListaRecursosHumanos();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -8,7 +8,11 @@ public class Habitacion {
     private double costo, cuota;
     private String estadoTexto;
     
-    
+    public Habitacion(int estado,double costo,double cuota){
+        this.estado = estado;
+        this.costo = costo;
+        this.cuota = cuota;
+    }
     
     public void setId(int id){
         this.id = id;

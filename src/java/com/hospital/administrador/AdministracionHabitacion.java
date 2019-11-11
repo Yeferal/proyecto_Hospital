@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class AdministracionHabitacion extends Conexion{
     
     
-    
+    /*Inserta una nueva habitacion en la DB*/
     public void insertarHabitacion(Habitacion habitacion){
         conectar();
         
@@ -37,7 +37,7 @@ public class AdministracionHabitacion extends Conexion{
             ex.printStackTrace();
         }
     }
-    
+    /*Elimina una habitacion de la DB*/
     public void eliminarHabitacion(int id){
         conectar();
         try {
@@ -51,7 +51,7 @@ public class AdministracionHabitacion extends Conexion{
         }
     }
     
-    
+    /*Modifica una habitacion de la DB*/
     public void modificarHabitacion(Habitacion habitacion){
         conectar();
         try {
@@ -64,20 +64,7 @@ public class AdministracionHabitacion extends Conexion{
             System.out.println("No se pudo Modificar");
         }
     }
-    
-//    public void modificarHabitacion(Habitacion habitacion){
-//        conectar();
-//        try {
-//            insertar = conect.prepareStatement(UPDATE+this.habitacion+SET+"paciente="+habitacion.getPaciente()+" "+WHERE+"id="+habitacion.getId()+";");
-//            insertar.executeUpdate();
-//            
-//            desconectar();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//            System.out.println("No se pudo Modificar");
-//        }
-//    }
-    
+    /*Verifica la existencia de una habitacion*/
     public boolean verificarExistencia(int id){
         conectar();
         try {
@@ -94,7 +81,7 @@ public class AdministracionHabitacion extends Conexion{
         desconectar();
         return false;
     }
-    
+    /*Verifica la exsitencia de paciente en una habitacion*/
     public boolean verificarExistenciaPaciente(int id){
         conectar();
         try {
@@ -112,18 +99,17 @@ public class AdministracionHabitacion extends Conexion{
         desconectar();
         return false;
     }
-    
+    /*Retorna una habitacion que fue buscada en la DB*/
     public Habitacion getHabitacion(int id){
-        Habitacion h = new Habitacion();
+        Habitacion h = null;
         conectar();
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+habitacion+WHERE+"id="+id+";");
             resultado.next();
+            
+            h = new Habitacion(resultado.getInt(3),resultado.getDouble(4),resultado.getDouble(5));
             h.setId(resultado.getInt(1));
-            h.setEstado(resultado.getInt(3));
-            h.setCosto(resultado.getDouble(4));
-            h.setCuota(resultado.getDouble(5));
             
         } catch (SQLException ex) {
             ex.printStackTrace();

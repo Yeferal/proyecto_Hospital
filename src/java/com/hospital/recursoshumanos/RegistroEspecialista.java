@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class RegistroEspecialista extends Conexion{
     
-    
+    /*inserta un especialista a la DB*/
     public void insertarEspecialista(Usuario usuario){
         conectar();
         
@@ -23,7 +23,7 @@ public class RegistroEspecialista extends Conexion{
             e.printStackTrace();
         }
     }
-    
+    /*verifiaca la existencia del especialista*/
     public boolean verficarExistenciaEspecialista(String cui){
         conectar();
         try {
@@ -42,7 +42,7 @@ public class RegistroEspecialista extends Conexion{
         return false;
     }
     
-    
+    /*elimina a un especialista de la DB*/
     public void eliminarEspecialista(int id){
         conectar();
         try {

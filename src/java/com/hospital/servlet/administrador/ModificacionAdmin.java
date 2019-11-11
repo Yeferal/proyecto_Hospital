@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ModificacionAdmin extends HttpServlet {
 
     RegistroModificacion registro =  new RegistroModificacion();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     ListaAdministracion lista = new ListaAdministracion();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 public class RegistroModificacionEmpleado extends Conexion{
  
-    
+    /*mopdifica a un empleado*/
     public void modificarEmpleado(Usuario usuario, String tipoRegistro, String fecha){
         conectar();
         
@@ -34,7 +34,7 @@ public class RegistroModificacionEmpleado extends Conexion{
         }
     }
     
-    
+    /*inserta el registro de la modificacion en la DB*/
     public void insertarHistorialModificacion(Usuario usuario, String tipoRegistro, String fecha){
         
         try {
@@ -55,17 +55,16 @@ public class RegistroModificacionEmpleado extends Conexion{
         
         
     }    
-    
+    /*retorna un usuario*/
     public Usuario getUsuario(int id){
-        Usuario u = new Usuario();
+        Usuario u = null;
         conectar();
         try {
             stmt=conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"id="+id+";");
             resultado.next();
+            u = new Usuario(resultado.getString(2),resultado.getString(3));
             u.setId(resultado.getInt(1));
-            u.setNombre(resultado.getString(2));
-            u.setCui(resultado.getString(3));
             u.setCodigo(resultado.getString(4));
             u.setIrtra(resultado.getDouble(5));
             u.setIgss(resultado.getDouble(6));

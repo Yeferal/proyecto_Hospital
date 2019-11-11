@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Contrato extends HttpServlet {
 
     RegistroContrato registro = new RegistroContrato();
-    Usuario usuario = new Usuario();
+    Usuario usuario = new Usuario("","");
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

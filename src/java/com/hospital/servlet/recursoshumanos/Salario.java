@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Salario extends HttpServlet {
 
     ListaRecursosHumanos lista = new ListaRecursosHumanos();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     CambioSalario registro =  new CambioSalario();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

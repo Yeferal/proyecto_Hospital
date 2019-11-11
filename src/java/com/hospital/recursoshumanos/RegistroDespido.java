@@ -16,6 +16,7 @@ import java.sql.SQLException;
 
 public class RegistroDespido extends Conexion{
     
+    /*inserta el despido el empleado, elimina de la DB*/
     public void insertarDespidoEmpleado(Usuario usuario, String tipoRegistro, String fecha){
     usuario = getUsuario(usuario.getId());    
     
@@ -37,7 +38,7 @@ public class RegistroDespido extends Conexion{
         
     }
     
-    
+    /*inserta el registro de la renuncia en la DB*/
     public void insertaRenunciaHistorial(Usuario usuario,String tipoRegistro, String fecha){
         
         
@@ -59,17 +60,16 @@ public class RegistroDespido extends Conexion{
         }
     }
     
-    
+    /*retorna a un empleado de la DB*/
     public Usuario getUsuario(int id){
-        Usuario u = new Usuario();
+        Usuario u = null;
         conectar();
         try {
             stmt=conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"id="+id+";");
             resultado.next();
+            u = new Usuario(resultado.getString(2),resultado.getString(3));
             u.setId(resultado.getInt(1));
-            u.setNombre(resultado.getString(2));
-            u.setCui(resultado.getString(3));
             u.setCodigo(resultado.getString(4));
             u.setIrtra(resultado.getDouble(5));
             u.setIgss(resultado.getDouble(6));

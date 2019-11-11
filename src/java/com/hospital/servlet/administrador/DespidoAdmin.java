@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DespidoAdmin extends HttpServlet {
 
     RegistroDespido registro = new RegistroDespido();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
     ListaAdministracion lista = new ListaAdministracion();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

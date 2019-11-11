@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class RegistroTarifario extends Conexion{
     
-    
+    /*inserta una tarifa a la DB*/
     public void insertarTarifa(Tarifa tarifa){
         conectar();
         
@@ -25,7 +25,7 @@ public class RegistroTarifario extends Conexion{
         } catch (SQLException e) {
         }
     }
-    
+    /*elimina una tarifa de la DB*/
     public void eliminarTarifa(int id){
         conectar();
         try {
@@ -37,7 +37,7 @@ public class RegistroTarifario extends Conexion{
             e.printStackTrace();
         }
     }
-    
+    /*Modifica la tarifa en DB*/
     public void modificarTarifa(Tarifa tarifa){
         conectar();
         
@@ -49,7 +49,7 @@ public class RegistroTarifario extends Conexion{
         } catch (SQLException e) {
         }
     }
-    
+    /*retorna una tarifa con la busqueda de su ID en la DB*/
     public Tarifa getTarifa(int id){
         Tarifa t = null;
         conectar();
@@ -57,12 +57,8 @@ public class RegistroTarifario extends Conexion{
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"* "+FROM+tarifario+WHERE+"id="+id+";");
             resultado.next();
-            t = new Tarifa();
+            t = new Tarifa(resultado.getString(2),resultado.getDouble(3),resultado.getDouble(4),resultado.getDouble(5));
             t.setId(resultado.getInt(1));
-            t.setTipo(resultado.getString(2));
-            t.setPrecio(resultado.getDouble(3));
-            t.setCosto(resultado.getDouble(4));
-            t.setCuota(resultado.getDouble(5));
             
             desconectar();
             

@@ -27,7 +27,7 @@ public class Especialistas extends HttpServlet {
 
     ListaRecursosHumanos lista = new ListaRecursosHumanos();
     RegistroEspecialista registro = new RegistroEspecialista();
-    Usuario u = new Usuario();
+    Usuario u = new Usuario("","");
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

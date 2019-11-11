@@ -29,8 +29,8 @@ public class PagoPersonal extends HttpServlet {
 
     ListaPersonal listaP = new ListaPersonal();
     RegistroPago registro = new RegistroPago();
-    Pago p = new Pago();
-    Usuario usuario = new Usuario();
+    
+    Usuario usuario = new Usuario("","");
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -73,13 +73,9 @@ public class PagoPersonal extends HttpServlet {
         usuario = registro.getUsuario(usuario.getId());
         int idE = Integer.parseInt(request.getParameter("nombre"));
         Usuario empleado = registro.getEspecialista(idE);
-        p.setNombreEmpleado(empleado.getNombre());
-        p.setCuiEmpleado(empleado.getCui());
-        p.setFecha(request.getParameter("fecha"));
-        p.setTipo("Pago Especialista");
-        p.setIdGerente(usuario.getId());
-        p.setNombreGerente(usuario.getNombre());
-        p.setPago(Double.parseDouble(request.getParameter("pago")));
+        
+        Pago p = new Pago(empleado.getNombre(),empleado.getCui(),request.getParameter("fecha"),"Pago Especialista",usuario.getId(),usuario.getNombre(),Double.parseDouble(request.getParameter("pago")));
+
         registro.insertarPago(p);
         
         ServletOutputStream stream1 = response.getOutputStream();
@@ -93,13 +89,8 @@ public class PagoPersonal extends HttpServlet {
         usuario = registro.getUsuario(usuario.getId());
         int idE = Integer.parseInt(request.getParameter("nombre"));
         Usuario empleado = registro.getEmpleado(idE);
-        p.setNombreEmpleado(empleado.getNombre());
-        p.setCuiEmpleado(empleado.getCui());
-        p.setFecha(request.getParameter("fecha"));
-        p.setTipo("Pago Empleado");
-        p.setIdGerente(usuario.getId());
-        p.setNombreGerente(usuario.getNombre());
-        p.setPago(Double.parseDouble(request.getParameter("pago")));
+        
+        Pago p = new Pago(empleado.getNombre(),empleado.getCui(),request.getParameter("fecha"),"Pago Empleado",usuario.getId(),usuario.getNombre(),Double.parseDouble(request.getParameter("pago")));
         
         registro.insertarPago(p);
         

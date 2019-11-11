@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class AdministracionArea extends Conexion{
     
     
-    
+    /*Insertar Area*/
     public void insertarArea(String nombre){
         conectar();
         
@@ -27,7 +27,7 @@ public class AdministracionArea extends Conexion{
             ex.printStackTrace();
         }
     }
-    
+    /*elimina una area de la DB*/
     public void eliminarArea(int id){
         conectar();
         try {
@@ -41,7 +41,7 @@ public class AdministracionArea extends Conexion{
         }
     }
     
-    
+    /*modifica un area de la DB*/
     public void modificarArea(int id, String nombre){
         conectar();
         try {
@@ -54,7 +54,7 @@ public class AdministracionArea extends Conexion{
             System.out.println("No se pudo Modificar");
         }
     }
-    
+    /*busca la existencia de un area*/
     public boolean verificarExistencia(String nombre){
         conectar();
         try {
