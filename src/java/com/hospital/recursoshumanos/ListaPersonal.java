@@ -2,8 +2,11 @@
 package com.hospital.recursoshumanos;
 
 import com.hospital.conexiones.Conexion;
+import static com.hospital.conexiones.Conexion.FROM;
+import static com.hospital.conexiones.Conexion.SELECT;
 import com.mycompany.hospital.Pago;
 import com.mycompany.hospital.Usuario;
+import com.mycompany.hospital.Vacacion;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +75,43 @@ public class ListaPersonal extends Conexion{
         }
         
         return lista;
+    }
+    
+    public List listarVacaciones(){
+        List<Vacacion> lista = new ArrayList<>();
+        Vacacion v = null;
+        conectar();
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"e.nombre,e.tipo,v.fecha_inicio,v.fecha_finaliza,e.id,v.id_empleado, v.dias,v.id "+FROM+"empleado e left join vacaciones v on (e.id=v.id_empleado AND v.estado=0);");
+            while (resultado.next()) {                
+                v = new Vacacion(resultado.getInt(5),resultado.getString(1) , resultado.getString(3), resultado.getString(4), resultado.getInt(7));
+                v.setTipo(resultado.getString(2));
+                v.setId(resultado.getInt(8));
+                lista.add(v);
+            }
+            desconectar();
+            
+        } catch (SQLException e) {
+        }
+        
+        
+        return lista;
+    }
+    
+    public String getFechaActual(){
+        String fecha = null;
+        conectar();
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"CURDATE();");
+            resultado.next();
+            fecha = resultado.getString(1);
+            desconectar();
+        } catch (SQLException e) {
+        }
+        
+        return fecha;
     }
     
     

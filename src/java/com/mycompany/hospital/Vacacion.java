@@ -24,7 +24,7 @@ public class Vacacion {
     public void setNombreEmpleado(String nombreEmpleado){
         this.nombreEmpleado = nombreEmpleado;
     }
-    public void setFecchaInicio(String fechaInicio){
+    public void setFechaInicio(String fechaInicio){
         this.fechaInicio = fechaInicio;
     }
     public void setFechaFinaliza(String fechaFinaliza){

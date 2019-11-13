@@ -41,7 +41,7 @@
                     <td>${dato.getFechaFinaliza()}</td>
                     <td>
                         
-                        <c:if test="${requestScope[dato.getFechaInicio()] == null}">
+                        <c:if test="${dato.getFechaInicio() == null}">
                             <form action="VacacionesRecHum?tip=0&&id=${dato.getIdEmpleado()}" method="post">
                             <input type="submit" value="Asignar Fecha Vacaciones" class="btn btn-primary">
                         </form><br>
@@ -51,8 +51,8 @@
                             
                         </c:if>    
                         
-                        <c:if test="${requestScope[dato.getFechaInicio()] != null}">
-                             <form action="VacacionesRecHum?tip=3&&id=${dato.getId()}" method="post" >
+                        <c:if test="${dato.getFechaInicio() != null}">
+                             <form action="VacacionesRecHum?tip=4&&id=${dato.getIdEmpleado()}" method="post" >
                             <input type="submit" value="Cambiar Fecha de Vacaciones" class="btn btn-primary">
                             </form>
                         </c:if>

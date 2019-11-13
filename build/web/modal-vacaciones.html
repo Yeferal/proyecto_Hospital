@@ -4,7 +4,7 @@
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Pagar Empleado</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Asignar Fecha Manualmente</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -37,7 +37,7 @@
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Pagar Empleado</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Asignar Fecha Aleatoria</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -45,7 +45,7 @@
                               <div class="modal-body">
                                   La fecha aleatoria sera: ${vacacion.getFechaInicio()} <br>
                                 Para el Empleado: ${vacacion.getNombreEmpleado()}
-                                <form action="VacacionesRecHum?tip=3&&id=${vacacion.getIdEmpleado()}" method="POST">
+                                <form action="VacacionesRecHum?tip=3&&id=${vacacion.getIdEmpleado()}&&fecha=${vacacion.getFechaInicio()}" method="POST">
                                 <div class="form-group">
                                     
                                     <input type="submit" value="Asignar">
@@ -68,7 +68,7 @@
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Pagar Empleado</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Cambiar Fecha de Vacaciones</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -79,7 +79,7 @@
                                 <div class="form-group">
                                     
                                     <label for="recipient-name" class="col-form-label" >Fecha de Vacaciones:</label>
-                                    <input type="date" name="fecha" min="${actual}" required/><br><br>
+                                    <input type="date" name="fecha" min="${actual}" value="${vacacion.getFechaInicio()}" required/><br><br>
                                     
                                     <input type="submit" value="Cambiar">
                                     

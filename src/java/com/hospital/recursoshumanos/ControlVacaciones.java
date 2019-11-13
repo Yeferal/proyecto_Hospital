@@ -12,52 +12,6 @@ import java.util.List;
 public class ControlVacaciones extends Conexion{
     
     RegistroNormativo norma = new RegistroNormativo();
-    RegistroVacaciones registro = new RegistroVacaciones();
-    
-    public void enviarRegistro(Usuario usuario,String fecha){
-        
-        registro.insertarVacaciones(usuario, fecha);
-    }
-    
-    
-    
-    
-    public List listarVacaciones(){
-        List<Vacacion> lista = new ArrayList<>();
-        Vacacion v = null;
-        conectar();
-        try {
-            stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"e.nombre,e.tipo,v.fecha_inicio,v.fecha_finaliza,e.id,v.id_empleado, v.dias "+FROM+"empleado e left join vacaciones v on (e.id=v.id_empleado AND v.estado=1);");
-            while (resultado.next()) {                
-                v = new Vacacion(resultado.getInt(6),resultado.getString(1) , resultado.getString(3), resultado.getString(4), resultado.getInt(7));
-                v.setTipo(resultado.getString(2));
-                
-                lista.add(v);
-            }
-            desconectar();
-            
-        } catch (SQLException e) {
-        }
-        
-        
-        return lista;
-    }
-    
-    public String getFechaActual(){
-        String fecha = null;
-        conectar();
-        try {
-            stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"CURDATE();");
-            resultado.next();
-            fecha = resultado.getString(1);
-            desconectar();
-        } catch (SQLException e) {
-        }
-        
-        return fecha;
-    }
     
     
     public String obtenerFechaFinalizacion(String fecha){
@@ -85,6 +39,7 @@ public class ControlVacaciones extends Conexion{
     
     private String sumarDia(int dias, String fecha){
         String fechaNueva = null;
+        conectar();
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+" DATE_ADD('"+fecha+"', INTERVAL "+dias+" DAY);");
