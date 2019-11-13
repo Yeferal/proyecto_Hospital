@@ -41,6 +41,8 @@ public class RegistroPago extends Conexion{
             resultado.next();
             usuario = new Usuario(resultado.getString(2),resultado.getString(3));
             usuario.setId(resultado.getInt(1));
+            usuario.setJefe(resultado.getInt(9));
+            
             desconectar();
         } catch (SQLException e) {
         }

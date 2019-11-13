@@ -59,7 +59,7 @@ public class Medicamento {
         return cantidad;
     }
     
-    public int minimo(){
+    public int getMinimo(){
         return minimo;
     }
 }

@@ -1,0 +1,51 @@
+<!-- Modal Agregar nuevo Medicamento-->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo medicamento</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  
+                                <form action="AgregarMedicamento" method="POST">
+                                <div class="form-group">
+                                    
+                                    <label for="recipient-name" class="col-form-label">Nombre Medicamento:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="nombre" placeholder="Medicamento" required><br>
+
+                                    <label for="recipient-name" class="col-form-label" >Precio:</label>
+                                    <input type="number" step="0.01" name="precio" required/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Costo:</label>
+                                    <input type="number" step="0.01" name="costo" required/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Cantidad:</label>
+                                    <input type="number" step="0.01" name="cantidad" value="0" required/><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Cantidad Minima de Existencia:</label>
+                                    <input type="number" step="0.01" name="minimo" required/><br>
+                                    
+                                    <input type="submit" value="Agregar">
+                                    
+                                    </div>
+                                    
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                <c:if test="${requestScope['activo1'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModal').modal('show');
+                            });
+                    </script>
+                </c:if>

@@ -1,0 +1,18 @@
+SMAP
+page_002dinventario_002djefe_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-inventario-jefe.jsp
+page-inventario-jefe.jsp
++ 1 header.html
+header.html
++ 2 navegacion-farmacia-jefe.html
+navegacion-farmacia-jefe.html
+*L
+5,9:50
+1#1,8:59
+13#0,5:66
+1#2,10:71
+17#0,4:80
+*E
