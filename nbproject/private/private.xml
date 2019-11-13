@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/recepcionista/ListaRecepcion.java</file>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/recepcionista/RegistroAsignacion.java</file>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/scripts-asigancion-recepcionista.html</file>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/page-home-recepcionista.jsp</file>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/recepcionista/RegistroPaciente.java</file>
-            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/navegacion-recepcion.html</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/page-vacaciones-rec-hum.jsp</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/mycompany/hospital/Vacacion.java</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/recursoshumanos/ControlVacaciones.java</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/servlet/recursoshumanos/VacacionesRecHum.java</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/web/modal-vacaciones.html</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/recursoshumanos/RegistroDespido.java</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/administrador/RegistroNormativo.java</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/recursoshumanos/RegistroVacaciones.java</file>
+            <file>file:/home/yefer/Documentos/Projectos%20Nerbeans/Hospital1/src/java/com/hospital/servlet/administrador/OtrosAdmin.java</file>
         </group>
     </open-files>
 </project-private>

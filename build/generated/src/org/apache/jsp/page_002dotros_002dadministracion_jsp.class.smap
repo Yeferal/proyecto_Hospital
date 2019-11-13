@@ -1,0 +1,22 @@
+SMAP
+page_002dotros_002dadministracion_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-otros-administracion.jsp
+page-otros-administracion.jsp
++ 1 header.html
+header.html
++ 2 navegacion-administrador.html
+navegacion-administrador.html
+*L
+5,10:60
+1#1,8:70
+14#0,5:77
+1#2,11:82
+18#0,2:92
+19:140,6
+19,13:96
+32:109,3
+33,11:112
+*E

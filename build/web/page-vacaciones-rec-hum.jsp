@@ -18,17 +18,15 @@
         <%@include file="navegacion-recursos-humanos.html" %>
         <%@include file="modal-vacaciones.html" %>
         
-        
         <table border="1">
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>Nombre</th>
-                    <th>Cui</th>
+                    <th>Tipo</th>
                     <th>Fecha asignada</th>
-                    <th>Asignar</th>
-                    <th>Cambiar</th>
-                    <th>Aleatorio</th>
+                    <th>Fecha Finaliza</th>
+                    <th>Opcion</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,28 +34,34 @@
                 <c:forEach var="dato" items="${datos}">
                 <tr>
                     <%ids++;%>
-                    <td><%=ids++%></td>
-                    <td>${dato.getNombre()}</td>
-                    <td>${dato.getCui()}</td>
+                    <td><%=ids%></td>
+                    <td>${dato.getNombreEmpleado()}</td>
                     <td>${dato.getTipo()}</td>
+                    <td>${dato.getFechaInicio()}</td>
+                    <td>${dato.getFechaFinaliza()}</td>
                     <td>
-                        <form action="?tip=1&&id=${dato.getId()}" method="post">
+                        
+                        <c:if test="${requestScope[dato.getFechaInicio()] == null}">
+                            <form action="VacacionesRecHum?tip=0&&id=${dato.getIdEmpleado()}" method="post">
                             <input type="submit" value="Asignar Fecha Vacaciones" class="btn btn-primary">
-                        </form>
-                    </td>
-                    <td>
-                        <form action="?tip=1&&id=${dato.getId()}" method="post" >
-                            <input type="submit" value="Cambiar Fecha de Vacaciones" class="btn btn-primary">
-                        </form>
-                    </td>
-                    <td>
-                        <form action="?tip=1&&id=${dato.getId()}" method="POST" >
+                        </form><br>
+                        <form action="VacacionesRecHum?tip=2&&id=${dato.getIdEmpleado()}" method="POST" >
                             <input type="submit" value="Asignacion Aleatoria" class="btn btn-primary">
                         </form>
+                            
+                        </c:if>    
+                        
+                        <c:if test="${requestScope[dato.getFechaInicio()] != null}">
+                             <form action="VacacionesRecHum?tip=3&&id=${dato.getId()}" method="post" >
+                            <input type="submit" value="Cambiar Fecha de Vacaciones" class="btn btn-primary">
+                            </form>
+                        </c:if>
                     </td>
                 </tr>
                 </c:forEach>
             </tbody>
         </table>
+                
+            <%@include file="scrpts-vacaciones.html" %>
     </body>
 </html>

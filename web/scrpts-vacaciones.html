@@ -1,0 +1,21 @@
+                <c:if test="${requestScope['activo1'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModal1').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo2'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModal2').modal('show');
+                            });
+                    </script>
+                </c:if>
+                <c:if test="${requestScope['activo3'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModal3').modal('show');
+                            });
+                    </script>
+                </c:if>
