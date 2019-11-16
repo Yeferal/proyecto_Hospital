@@ -21,7 +21,6 @@ public class RegistroMedicamento extends Conexion{
             insertar.setInt(5, medicamento.getMinimo());
             
             insertar.executeUpdate();
-            System.out.println("Agrego esa mierda");
             
             desconectar();
         } catch (SQLException e) {

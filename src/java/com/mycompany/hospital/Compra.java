@@ -6,10 +6,8 @@ public class Compra {
     private String nombreMedicamento,fecha;
     private double precio,total;
     
-    public Compra(int idFactura,String nombreMedicamento,String fecha,double precio,int cantidad,double total){
-        this.idFactura = idFactura;
+    public Compra(String nombreMedicamento,double precio,int cantidad,double total){
         this.nombreMedicamento = nombreMedicamento;
-        this.fecha = fecha;
         this.precio = precio;
         this.cantidad = cantidad;
         this.total = total;

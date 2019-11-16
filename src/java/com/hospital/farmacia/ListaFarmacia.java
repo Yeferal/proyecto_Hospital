@@ -30,4 +30,7 @@ public class ListaFarmacia extends Conexion{
         
         return lista;
     }
+    
+    
+    
 }

@@ -9,10 +9,31 @@ page-compra-medicamento.jsp
 header.html
 + 2 navegacion-farmacia-jefe.html
 navegacion-farmacia-jefe.html
++ 3 modal-medicamento-jefe.html
+modal-medicamento-jefe.html
 *L
-5,9:50
-1#1,8:59
-13#0,5:66
-1#2,10:71
-17#0,6:80
+5,11:64
+1#1,8:75
+15#0,5:82
+1#2,10:87
+19#0,2:96
+1#3,45:98
+45:331,8
+46,6:339
+51,33:145
+20#0,19:178
+38:363,11
+39:374,6
+40:380
+40,31:199
+70:231,8
+71,11:239
+82:250,3
+83:253
+83:255,11
+84:266
+85,2:267,3
+87,6:273
+92,4:295
+95,5:309
 *E
