@@ -1,6 +1,6 @@
 <%-- 
-    Document   : page-reporte1-empleados
-    Created on : 17/11/2019, 01:04:30 AM
+    Document   : page-reporte2-empleados
+    Created on : 17/11/2019, 01:14:23 AM
     Author     : yefer
 --%>
 
@@ -17,7 +17,7 @@
     <body>
         <%@include file="navegacion/navegacion-reportes-empleados.html" %>
         <br>
-        <form action="ReporteContrato" method="POST">
+        <form action="ReporteRetiro" method="POST">
             <label for="recipient-name" class="col-form-label">Area:</label>
                                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="tipoempleado">
                                         <option selected ></option>

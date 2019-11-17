@@ -1,6 +1,6 @@
 <%-- 
-    Document   : page-reporte1-empleados
-    Created on : 17/11/2019, 01:04:30 AM
+    Document   : page-reporte3-empleados
+    Created on : 17/11/2019, 01:14:33 AM
     Author     : yefer
 --%>
 
@@ -17,20 +17,13 @@
     <body>
         <%@include file="navegacion/navegacion-reportes-empleados.html" %>
         <br>
-        <form action="ReporteContrato" method="POST">
+        <form action="ReporteMedicos" method="POST">
             <label for="recipient-name" class="col-form-label">Area:</label>
-                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="tipoempleado">
-                                        <option selected ></option>
-                                        <c:forEach var="area" items="${objetoarea}">
-                                        <option value="${area}">${area}</option>
-                                        </c:forEach>
+                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="opcion">
+                                        <option value="0">Asignados</option>
+                                        <option value="1">DesAsignados</option>
                                       </select><br>
             
-            <label for="recipient-name" class="col-form-label" >Fecha minima:</label>
-            <input type="date" name="fecha2"  value="${fech1}" height="100px" width="100px">
-            
-            <label for="recipient-name" class="col-form-label" >Fecha Maxima:</label>
-            <input type="date" name="fecha1" value="${fech2}"  height="100px" width="100px">
             
             <input type="submit" value="Filtrar">
         </form>
@@ -45,8 +38,6 @@
                     <th>CUI</th>
                     <th>Salario</th>
                     <th>Tipo</th>
-                    <th>Area</th>
-                    <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,8 +51,6 @@
                     <td>${dato.getCui()}</td>
                     <td>${dato.getSalario()}</td>
                     <td>${dato.getTipo()}</td>
-                    <td>${dato.getRegistro()}</td>
-                    <td>${dato.getFecha()}</td>
                 </tr>
                 </c:forEach>
             </tbody>
