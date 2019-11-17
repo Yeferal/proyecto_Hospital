@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-recursos-humanos.html" %>
+        <%@include file="navegacion/navegacion-recursos-humanos.html" %>
         <br>
         <div>
         
@@ -26,7 +26,7 @@
                 Pago de Empleado
                 </button>
             </div>
-        <%@include file="modal-pagos.html" %>
+        <%@include file="modals/modal-pagos.html" %>
         
         <table border="1" cellpadding="1">
             <thead>
@@ -64,7 +64,7 @@
                     </td>
                 </tr>
                 </c:forEach>
-        
-        
+        </tbody>
+        </table>
     </body>
 </html>

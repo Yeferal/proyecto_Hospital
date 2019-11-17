@@ -1,11 +1,15 @@
 
 package com.mycompany.hospital;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Medicamento {
     private int id,cantidad,minimo;
     private double precio,costo;
     private String nombre;
+    private List<Venta> ventas = new ArrayList<>();
     
     public Medicamento(String nombre,double precio,double costo,int cantidad, int minimo){
         this.nombre = nombre;
@@ -39,6 +43,13 @@ public class Medicamento {
         this.minimo = minimo;
     }
     
+    public void setListaVentas(List ventas){
+        this.ventas = ventas;
+    }
+    
+    
+    
+    
     public int getId(){
         return id;
     }
@@ -61,5 +72,9 @@ public class Medicamento {
     
     public int getMinimo(){
         return minimo;
+    }
+    
+    public List getVentas(){
+        return ventas;
     }
 }

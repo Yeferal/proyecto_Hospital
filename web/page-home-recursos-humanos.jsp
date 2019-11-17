@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-recursos-humanos.html" %>
+        <%@include file="navegacion/navegacion-recursos-humanos.html" %>
         <br>
         <div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaln">
@@ -17,7 +17,7 @@
                 </button>
 
         </div>
-        <%@include file="modal-empleado-recuroshumanos.html" %>
+        <%@include file="modals/modal-empleado-recuroshumanos.html" %>
         <%@include file="scripts-empleado-recursoshumanos.html" %>
                         
         <table border="1">

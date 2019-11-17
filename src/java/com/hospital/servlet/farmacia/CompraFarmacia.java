@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +58,10 @@ public class CompraFarmacia extends HttpServlet {
             String fecha = (String) request.getParameter("fecha1");
 
             registro.insertarCompra(listaCompra, fecha);
+            ServletOutputStream stream1 = response.getOutputStream();
+            stream1.print("<html><head></head><body onload=\"alert('El total de la compra fue de: "+registro.calcularTotal(listaCompra)+"'); window.location='page-compra-medicamento.jsp' \"></body></html>");
+            stream1.close();
+            
         }else{
             apilarCompra(request, response);
         }
@@ -92,8 +97,6 @@ public class CompraFarmacia extends HttpServlet {
         if(request.getAttribute("listado")!=null){
             listaCompra = (List<Compra>) request.getAttribute("listado");
         }
-        
-        
         
         Compra c = new Compra(request.getParameter("nombre"), precio,cantidad, total);
         

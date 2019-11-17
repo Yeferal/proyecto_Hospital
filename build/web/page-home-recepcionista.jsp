@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-recepcion.html"%>
+        <%@include file="navegacion/navegacion-recepcion.html"%>
         
         <br>
         <div>
@@ -23,8 +23,8 @@
             Internar Paciente
         </button>
 
-            <%@include file="modal-ingreso-paciente.html"%>
-            <%@include file="modal-asignacion-paciente.html"%>
+            <%@include file="modals/modal-ingreso-paciente.html"%>
+            <%@include file="modals/modal-asignacion-paciente.html"%>
 
             <table border="1">
                 <thead>

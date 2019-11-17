@@ -5,14 +5,12 @@ package com.mycompany.hospital;
 public class Venta {
     private int id, idFactura,cantidad;
     private String nombreEmpleado,nombreCliente,nombreMedicamento,fecha;
-    private double precio,total;
+    private double precio,total, costo;
     
-    public Venta(int idFactura,String nombreEmpleado, String nombreCliente,String nombreMedicamento,String fecha,double precio,int cantidad,double total){
-        this.idFactura = idFactura;
+    public Venta(String nombreEmpleado, String nombreCliente,String nombreMedicamento,double precio,int cantidad,double total){
         this.nombreEmpleado = nombreEmpleado;
         this.nombreCliente = nombreCliente;
         this.nombreMedicamento = nombreMedicamento;
-        this.fecha = fecha;
         this.precio = precio;
         this.cantidad = cantidad;
         this.total = total;
@@ -45,6 +43,9 @@ public class Venta {
     public void setTotal(double total){
         this.total = total;
     }
+    public void setCosto(double costo){
+        this.costo= costo;
+    }
     
     public int getId(){
         return id;
@@ -72,5 +73,12 @@ public class Venta {
     }
     public double getTotal(){
         return total;
+    }
+    
+    public double getGanancia(){
+        return total-costo*cantidad;
+    }
+    public double  getCosto(){
+        return costo;
     }
 }

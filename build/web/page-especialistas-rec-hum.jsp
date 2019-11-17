@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-recursos-humanos.html" %>
+        <%@include file="navegacion/navegacion-recursos-humanos.html" %>
         <div><br>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaln">
             Agregar Especialista a la Planilla

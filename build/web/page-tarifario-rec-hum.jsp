@@ -15,11 +15,11 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-recursos-humanos.html" %>
+        <%@include file="navegacion/navegacion-recursos-humanos.html" %>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaln">
         Agregar Operacion al Tarifario
         </button>
-        <%@include file="modal-tarifario.html" %>
+        <%@include file="modals/modal-tarifario.html" %>
         
         <table border="1">
             <thead>

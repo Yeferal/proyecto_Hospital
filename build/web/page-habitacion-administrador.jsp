@@ -17,7 +17,7 @@
     </head>
     <body>
         
-        <%@include file="navegacion-administrador.html" %>
+        <%@include file="navegacion/navegacion-administrador.html" %>
         <div>
             
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaln">
@@ -25,7 +25,7 @@
                         </button>
 
                         
-            <%@include file="modal-nueva-habitacion.html" %>
+            <%@include file="modals/modal-nueva-habitacion.html" %>
             
         </div>
             

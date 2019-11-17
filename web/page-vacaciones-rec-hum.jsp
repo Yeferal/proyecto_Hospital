@@ -15,8 +15,8 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-recursos-humanos.html" %>
-        <%@include file="modal-vacaciones.html" %>
+        <%@include file="navegacion/navegacion-recursos-humanos.html" %>
+        <%@include file="modals/modal-vacaciones.html" %>
         
         <table border="1">
             <thead>

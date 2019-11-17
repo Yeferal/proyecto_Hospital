@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-farmacia-jefe.html" %>
+        <%@include file="navegacion/navegacion-farmacia-jefe.html" %>
         
         
         <table border="1" class="fila">

@@ -5,6 +5,7 @@
  */
 package com.hospital.servlet.farmacia;
 
+import com.hospital.farmacia.ListaFarmacia;
 import com.hospital.recursoshumanos.ListaPersonal;
 import com.hospital.recursoshumanos.RegistroPago;
 import com.mycompany.hospital.Usuario;
@@ -27,6 +28,7 @@ public class HomeFarmacia extends HttpServlet {
 
     ListaPersonal listaP = new ListaPersonal();
     RegistroPago registro = new RegistroPago();
+    ListaFarmacia lista = new ListaFarmacia();
     
     Usuario usuario = new Usuario("","");
     
@@ -39,10 +41,11 @@ public class HomeFarmacia extends HttpServlet {
         
         
         if(usuario.getJefe()==1){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CompraFarmacia");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("page-compra-medicamento.jsp");
             dispatcher.forward(request, response);
         }else{
-            RequestDispatcher dispatcher = request.getRequestDispatcher("VentaFarmacia");
+            request.setAttribute("empleado", usuario);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("page-venta-medicamento.jsp");
             dispatcher.forward(request, response);
         }
         
@@ -61,5 +64,6 @@ public class HomeFarmacia extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+    
 
 }

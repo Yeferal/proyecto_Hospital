@@ -31,6 +31,40 @@ public class ListaFarmacia extends Conexion{
         return lista;
     }
     
+    public Medicamento getMedicamento(int id){
+        conectar();
+        Medicamento m = null;
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery("SELECT * FROM medicamento WHERE id="+id+";");
+            resultado.next();
+            m = new Medicamento(resultado.getString(2), resultado.getDouble(3), 0, resultado.getInt(5), resultado.getInt(6));
+            m.setId(resultado.getInt(1));
+            
+        } catch (SQLException e) {
+        }
+        desconectar();
+        
+        return m;
+    }
+    
+    public boolean getCantidadMedicamento(int id, int cantidad){
+        conectar();
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery("SELECT * FROM medicamento WHERE id="+id+";");
+            resultado.next();
+            if(resultado.getInt(5)<cantidad){
+                desconectar();
+                return false;
+            }
+            
+        } catch (SQLException e) {
+        }
+        desconectar();
+        return true;
+    }
+    
     
     
 }

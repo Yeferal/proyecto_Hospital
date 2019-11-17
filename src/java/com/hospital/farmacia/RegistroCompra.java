@@ -16,25 +16,21 @@ public class RegistroCompra extends Conexion{
         System.out.println("Total: "+calcularTotal(compras)+" en la fecha de "+fecha);
         
         insertarFactura(calcularTotal(compras), fecha);
-        
+        agregarCompras(compras, fecha);
         
         desconectar();
     }
     
     
-    private double calcularTotal(List compra){
+    public double calcularTotal(List compra){
         double total = 0;
         for (int i = 0; i < compra.size(); i++) {
             Compra c =(Compra) compra.get(i);
             total += c.getTotal();
         }
-        
-        
         return total;
     }
-    public void insertarCompra(Compra compra){
-        
-    }
+
     private void insertarFactura(double total,String fecha){
         try {
             insertar = conect.prepareStatement("INSERT INTO factura_compra (fecha,total) VALUES (?,?)");
@@ -65,16 +61,43 @@ public class RegistroCompra extends Conexion{
 
     }
     
+    private void actualizarInventario(Compra compra){
+        
+        try {
+            
+            insertar = conect.prepareStatement("UPDATE medicamento SET cantidad=cantidad+"+compra.getCantidad()+" WHERE nombre='"+compra.getNombreMedicamento()+"';");
+            insertar.executeUpdate();
+            
+        } catch (SQLException e) {
+        }
+        
+    }
+    
+    
     private int getFactura(){
         int f = 0;
         try {
             stmt = conect.createStatement();
-            resultado = stmt.executeQuery("SELECT id FROM factura_compra;");
+            resultado = stmt.executeQuery("SELECT id FROM factura_compra ORDER by id DESC;");
             resultado.next();
             f=resultado.getInt(1);
             
         } catch (SQLException e) {
         }
         return f;
+    }
+    
+    private void agregarCompras(List compras,String fecha){
+        int factura = getFactura();
+        
+        for (int i = 0; i < compras.size(); i++) {
+            Compra c =(Compra) compras.get(i);
+            c.setFecha(fecha);
+            c.setIdFactura(factura);
+            
+            insertarCompraMedicamento(c);
+            actualizarInventario(c);
+        }
+        
     }
 }

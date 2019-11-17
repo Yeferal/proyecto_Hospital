@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-administrador.html" %>
+        <%@include file="navegacion/navegacion-administrador.html" %>
         <c:set var="dato" value="${objeto}"></c:set>
  
         <br>

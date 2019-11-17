@@ -1,0 +1,66 @@
+<!-- Modal Agregar Compra-->
+                        <div class="modal fade" id="exampleModalfecha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Nueva Venta</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                
+                                El Empleado que Vende: ${empleado.getNombre()}  
+                                  
+                                <form action="VentaFarmacia?tip=1" method="POST">
+                                <div class="form-group">
+                                    
+                                    <label for="recipient-name" class="col-form-label">Nombre Cliente:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="nombreCliente" placeholder="Cliente" required><br>
+                                    
+                                    <label for="recipient-name" class="col-form-label" >Ingrese la Fecha de Compra:</label>
+                                    <input type="date" name="fecha" required/><br><br>
+                                    
+                                    <input type="submit" value="Listo">
+                                    
+                                    </div>
+                                    
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+<div class="modal fade" id="exampleModalMsj" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Existencia</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  No existen la cantidad necesaria de este medicamento
+                                  
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+<c:if test="${requestScope['activo1'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalMsj').modal('show');
+                            });
+                    </script>
+                </c:if>

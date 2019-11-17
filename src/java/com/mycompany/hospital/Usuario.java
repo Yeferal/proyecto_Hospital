@@ -1,6 +1,9 @@
 
 package com.mycompany.hospital;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Usuario {
     
@@ -14,6 +17,7 @@ public class Usuario {
     private double igss;
     private String tipo;
     private int jefe;
+    private List<Venta> ventas = new ArrayList<>();
     
     public Usuario(String nombre,String cui){
         this.nombre = nombre;
@@ -55,6 +59,13 @@ public class Usuario {
     public void setJefe(int jefe){
         this.jefe = jefe;
     }
+    public void setListaVentas(List ventas){
+        this.ventas = ventas;
+    }
+    
+    
+    
+    
     
     public int getId(){
         return id;
@@ -90,5 +101,8 @@ public class Usuario {
     
     public int getJefe(){
         return jefe;
+    }
+    public List getVentas(){
+        return ventas;
     }
 }

@@ -16,8 +16,8 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="navegacion-farmacia-jefe.html" %>
-        <%@include file="modal-medicamento-jefe.html" %>
+        <%@include file="navegacion/navegacion-farmacia-jefe.html" %>
+        <%@include file="modals/modal-medicamento-jefe.html" %>
         <c:if test="${requestScope['opcion'] == null}" >
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Agregar Medicamento
@@ -45,10 +45,10 @@
                     </select><br>
 
                 <label for="recipient-name" class="col-form-label" >Precio:</label>
-                <input type="number" step="0.01" name="precio" required/>
+                <input type="number" step="0.01" name="precio" min="0" required/>
                                     
                 <label for="recipient-name" class="col-form-label" >Cantidad:</label>
-                <input type="number" name="cantidad" required/>
+                <input type="number" name="cantidad" min="1" required/>
 
                 <label for="recipient-name" class="col-form-label" >Fecha de Compra:</label>
                 <input type="date" value="${fechaCompra}" name="fecha" required readonly/><br><br>

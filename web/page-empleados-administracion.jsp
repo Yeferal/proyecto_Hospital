@@ -16,7 +16,7 @@
     </head>
     <body>
         
-        <%@include file="navegacion-administrador.html" %>
+        <%@include file="navegacion/navegacion-administrador.html" %>
         <br>
         <div>
 
@@ -25,8 +25,8 @@
                 </button>
 
         </div>
-        <%@include file="modal-contratar-administracion.html" %>
-        <%@include file="modal-empleado-administracion.html" %>
+        <%@include file="modals/modal-contratar-administracion.html" %>
+        <%@include file="modals/modal-empleado-administracion.html" %>
         <%@include file="scripts-administracion-empleado.html" %>
                         
         <table border="1">
@@ -82,7 +82,5 @@
             </tbody>
         </table>
 
-            
-        </div>
     </body>
 </html>
