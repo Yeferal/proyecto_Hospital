@@ -73,6 +73,12 @@ public class LoginSesion extends HttpServlet {
                 return "RecepcionPaciente";
             case "Farmacia":
                 return "HomeFarmacia";
+            case "Enfermeria":
+                return "HomeEnfermeria";
+            case "Medico":
+                return "HomeMedico";
+            case "Cajero":
+                return "HomeCaja";
         }   
             return "";
         

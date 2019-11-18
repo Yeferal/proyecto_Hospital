@@ -1,0 +1,27 @@
+SMAP
+page_002dhome_002denfermeria_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-home-enfermeria.jsp
+page-home-enfermeria.jsp
++ 1 header.html
+header.html
+*L
+5,10:59
+1#1,8:69
+14#0,29:76
+42:172,11
+43:183,6
+44:189
+44,6:107
+49:214,11
+50:225,6
+51:231
+51,30:115
+80:256,11
+81:267
+82,3:268,3
+85,2:277
+86,8:147
+*E

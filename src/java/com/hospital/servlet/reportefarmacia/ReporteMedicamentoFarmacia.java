@@ -2,6 +2,7 @@
 package com.hospital.servlet.reportefarmacia;
 
 import com.hospital.farmacia.ListaReporte;
+import com.hospital.jasper.Jasper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,10 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 public class ReporteMedicamentoFarmacia extends HttpServlet {
 
     ListaReporte reporte = new ListaReporte();
+    Jasper documento = new Jasper();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("datos", reporte.listarReporteMedicamentos(""));
+        documento.imprimir(reporte.listarReporteMedicamentos(""));
+        System.out.println(getClass().getResourceAsStream("./Farmacia1.jasper"));
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-reporte1-farmacia.jsp");
         dispatcher.forward(request, response);
         
