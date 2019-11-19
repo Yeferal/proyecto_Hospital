@@ -1,0 +1,25 @@
+SMAP
+page_002dhistorial_002drec_002dhum_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-historial-rec-hum.jsp
+page-historial-rec-hum.jsp
++ 1 header.html
+header.html
++ 2 navegacion-recursos-humanos.html
+navegacion/navegacion-recursos-humanos.html
+*L
+5,10:60
+1#1,8:70
+14#0,5:77
+1#2,13:82
+18#0,3:94
+21:97,3
+22,20:100
+41:145,11
+42,3:156
+45,7:159,3
+52,2:180
+53,6:122
+*E
