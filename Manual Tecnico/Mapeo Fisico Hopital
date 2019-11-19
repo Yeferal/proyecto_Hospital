@@ -1,0 +1,234 @@
+CREATE DATABASE hospital;
+USE hospital;
+
+CREATE TABLE administrador(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
+    cui VARCHAR(15) NOT NULL,
+    codigo VARCHAR(25) NOT NULL,
+    salario DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_id_administrador PRIMARY KEY(id)
+);
+
+CREATE TABLE areas(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(20) NOT NULL,
+    CONSTRAINT PK_id_area PRIMARY KEY(id),
+    KEY nombre_idx(nombre)
+);
+
+CREATE TABLE habitacion(
+	id INT AUTO_INCREMENT NOT NULL,
+    paciente BOOLEAN DEFAULT 0,
+    estado BOOLEAN DEFAULT 1,
+    costo DECIMAL(5,2) NOT NULL,
+    cuota DECIMAL(5,2) NOT NULL,
+    CONSTRAINT PK_id_habitacion PRIMARY KEY(id)
+);
+
+CREATE TABLE normativo(
+	id INT AUTO_INCREMENT NOT NULL,
+    vacaciones INT NOT NULL,
+    CONSTRAINT PK_id_vacaciones PRIMARY KEY(id)
+);
+
+CREATE TABLE recursos_humanos(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(60) NOT NULL,
+    cui VARCHAR(15) NOT NULL,
+    codigo VARCHAR(25) NOT NULL,
+    salario DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_id_recursos_humanos PRIMARY KEY(id),
+    key nombrerecursos_idx(nombre)
+);
+
+CREATE TABLE gerente(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(60) NOT NULL,
+    cui VARCHAR(15) NOT NULL,
+    codigo VARCHAR(25) NOT NULL,
+    salario DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_id_gerente PRIMARY KEY(id),
+    key nombreGerente_idx(nombre)
+);
+
+CREATE TABLE tarifario(
+	id INT AUTO_INCREMENT NOT NULL,
+    tipo_operacion VARCHAR(25) NOT NULL,
+    precio DECIMAL(15,2) NOT NULL,
+    costo_operacion DECIMAL(15,2) NOT NULL,
+	cuota_especialista DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_tarifario PRIMARY KEY(id)
+);
+
+CREATE TABLE especialistas(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(60) NOT NULL,
+    cui VARCHAR(15) NOT NULL,
+    CONSTRAINT PK_id_especialista PRIMARY KEY(id)
+);
+
+CREATE TABLE paciente(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(60) NOT NULL,
+    cui VARCHAR(15) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    edad INT NOT NULL,
+    no_habitacion INT NOT NULL,
+    fecha_ingreso DATE NOT NULL,
+    CONSTRAINT PK_id_paciente PRIMARY KEY(id),
+    KEY nombre_paciente_idx(nombre)
+);
+
+CREATE TABLE empleado(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(60) NOT NULL,
+    cui VARCHAR(15) NOT NULL,
+    codigo VARCHAR(25),
+    irtra DECIMAL(10,2) DEFAULT 0,
+    igss DECIMAL(10,2) DEFAULT 0,
+    salario DECIMAL(10,2) NOT NULL,
+    tipo VARCHAR(25) NOT NULL,
+    jefe BOOLEAN DEFAULT 0,
+    CONSTRAINT PK_id_empleado PRIMARY KEY(id),
+    key nombre_empleado(nombre),
+    key cui_empleado_idx(cui)
+);
+
+CREATE TABLE pagos(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre_empleado VARCHAR(60) NOT NULL,
+    cui_empleado VARCHAR(15) NOT NULL,
+    fecha DATE NOT NULL,
+    tipo VARCHAR(30) NOT NULL,
+    id_gerente INT NOT NULL,
+    nombre_gerente VARCHAR(60) NOT NULL,
+    pago_empleado DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_pago PRIMARY KEY(id),
+    CONSTRAINT FK_nombre_empleado_pago FOREIGN KEY(nombre_empleado) REFERENCES empleado(nombre),
+    CONSTRAINT FK_cui_empleado_pago FOREIGN KEY(cui_empleado) REFERENCES empleado(cui),
+    CONSTRAINT FK_id_gerente_pago FOREIGN KEY(id_gerente) REFERENCES gerente(id),
+    CONSTRAINT FK_nombre_gerente_pago FOREIGN KEY(nombre_gerente) REFERENCES gerente(nombre)
+);
+
+CREATE TABLE historia_laboral(
+	id INT AUTO_INCREMENT NOT NULL,
+    empleado VARCHAR(60) NOT NULL,
+    cui_empleado VARCHAR(15) NOT NULL,
+    salario_empleado DECIMAL(15,2) NOT NULL,
+    tipo_historial VARCHAR(25) NOT NULL,
+    area_trabajo VARCHAR(20) NOT NULL,
+    fecha_registro DATE NOT NULL,
+    CONSTRAINT PK_id_historial PRIMARY KEY(id),
+    CONSTRAINT FK_nombre_empleado_historial FOREIGN KEY(empleado) REFERENCES empleado(nombre),
+    CONSTRAINT FK_cui_empleado_historial FOREIGN KEY(cui_empleado) REFERENCES empleado(cui),
+    CONSTRAINT FK_areas_historial FOREIGN KEY(area_trabajo) REFERENCES areas(nombre)
+);
+
+CREATE TABLE vacaciones(
+	id INT AUTO_INCREMENT NOT NULL,
+    id_empleado INT NOT NULL,
+    nombre_empleado VARCHAR(60) NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_finaliza  DATE NOT NULL,
+    estado BOOLEAN DEFAULT 0,
+    dias INT NOT NULL,
+    CONSTRAINT PK_id_vacaciones PRIMARY KEY(id),
+    CONSTRAINT FK_nombre_empleado_vacaciones FOREIGN KEY(nombre_empleado) REFERENCES empleado(nombre)
+);
+
+CREATE TABLE asignacion(
+	id_asignacion INT AUTO_INCREMENT NOT NULL,
+	id_paciente INT NOT NULL,
+    nombre_paciente VARCHAR(60) NOT NULL,
+    id_empleado INT NOT NULL,
+    nombre_empleado VARCHAR(60) NOT NULL,
+    CONSTRAINT PK_id_asignacion PRIMARY KEY(id_asignacion),
+    CONSTRAINT FK_id_paciente_asignacion FOREIGN KEY(id_paciente) REFERENCES paciente(id),
+    CONSTRAINT FK_nombre_paciente_asignacion FOREIGN KEY(nombre_paciente) REFERENCES paciente(nombre),
+    CONSTRAINT FK_id_empleado_asignacion FOREIGN KEY(id_empleado) REFERENCES empleado(id),
+    CONSTRAINT FK_nombre_empleado_asignacion FOREIGN KEY(nombre_empleado) REFERENCES empleado(nombre)
+);
+
+CREATE TABLE consulta(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre_paciente VARCHAR(60) NOT NULL,
+    fecha  DATE NOT NULL,
+    cuota DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_consulta PRIMARY KEY(id)
+);
+
+CREATE TABLE cuenta(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre_paciente VARCHAR(60) NOT NULL,
+    descripcion VARCHAR(300) NOT NULL,
+    Total DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_cuenta PRIMARY KEY(id)
+);
+
+CREATE TABLE historial_medico(
+	id INT AUTO_INCREMENT NOT NULL,
+    id_paciente INT NOT NULL,
+    descripcion VARCHAR(300) NOT NULL,
+    fecha  DATE NOT NULL,
+    tipo VARCHAR(60) NOT NULL,
+    total DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_historial_medico PRIMARY KEY(id),
+    CONSTRAINT FK_id_paciente_historial_medico FOREIGN KEY(id_paciente) REFERENCES paciente(id)
+);
+
+CREATE TABLE medicamento(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(60) NOT NULL,
+    precio DECIMAL(15,2) NOT NULL,
+    costo DECIMAL(15,2) NOT NULL,
+    cantidad INT NOT NULL,
+    minimo INT NOT NULL,
+    CONSTRAINT PK_id_medicamento PRIMARY KEY(id),
+    KEY nombre_idx(nombre)
+);
+
+CREATE TABLE compra_medicamento(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre_medicamento VARCHAR(60) NOT NULL,
+    fecha  DATE NOT NULL,
+    precio DECIMAL(15,2) NOT NULL,
+    cantidad INT NOT NULL,
+    total DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_compra_medicamento PRIMARY KEY(id),
+    CONSTRAINT FK_nombre_compra_medicamento FOREIGN KEY(nombre_medicamento) REFERENCES medicamento(nombre)
+);
+
+CREATE TABLE venta_medicamento(
+	id INT AUTO_INCREMENT NOT NULL,
+    nombre_empleado VARCHAR(60) NOT NULL,
+    nombre_cliente VARCHAR(60) NOT NULL,
+    nombre_medicamento VARCHAR(60) NOT NULL,
+    fecha  DATE NOT NULL,
+    precio DECIMAL(15,2) NOT NULL,
+    cantidad INT NOT NULL,
+    total DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_compra_medicamento PRIMARY KEY(id),
+    CONSTRAINT FK_nombre_empleado_venta FOREIGN KEY(nombre_empleado) REFERENCES empleado(nombre),
+    CONSTRAINT FK_nombre_medicamento_venta FOREIGN KEY(nombre_medicamento) REFERENCES medicamento(nombre)
+);
+CREATE TABLE factura_venta(
+	id INT AUTO_INCREMENT NOT NULL,
+    fecha  DATE NOT NULL,
+    total DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_factura_venta_medicamento PRIMARY KEY(id)
+);
+CREATE TABLE factura_compra(
+	id INT AUTO_INCREMENT NOT NULL,
+    fecha  DATE NOT NULL,
+    total DECIMAL(15,2) NOT NULL,
+    CONSTRAINT PK_id_factura_compra_medicamento PRIMARY KEY(id)
+);
+CREATE TABLE operacion(
+	id INT AUTO_INCREMENT NOT NULL,
+    fecha  DATE NOT NULL,
+    cliente VARCHAR(60) NOT NULL,
+    medico VARCHAR(60) NOT NULL,
+    CONSTRAINT PK_id_operacion PRIMARY KEY(id)
+);
+
