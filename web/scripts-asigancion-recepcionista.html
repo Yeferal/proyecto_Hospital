@@ -28,3 +28,10 @@
                     </script>
                 </c:if>
 
+                <c:if test="${requestScope['activo5'] != null}">
+                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#exampleModalAlta').modal('show');
+                            });
+                    </script>
+                </c:if>

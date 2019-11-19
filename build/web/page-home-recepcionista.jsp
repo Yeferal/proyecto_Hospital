@@ -34,7 +34,6 @@
                         <th>No. Habitacion</th>
                         <th>Fecha Ingreso</th>
                         <th>Asignar</th>
-                        <th>Desasignar</th>
                         <th>Medicos</th>
                         <th>Enfermeros</th>
                         <th>Dar de Alta</th>
@@ -53,14 +52,6 @@
                             </form>
                             <form action="AsignacionPaciente?tip=3&&id=${dato.getId()}" method="POST">
                                 <input type="submit" value="Asignar Enfermero" class="btn btn-primary">
-                            </form>
-                        </td>
-                        <td>
-                            <form action="" method="POST">
-                                <input type="submit" value="Desasignar Medico" class="btn btn-primary">
-                            </form>
-                            <form action="#" method="POST">
-                                <input type="submit" value="Desasignar Enfermero" class="btn btn-primary">
                             </form>
                         </td>
                         <td>
@@ -89,7 +80,7 @@
                             </div>
                         </td>
                         <td>
-                            <form action="#" method="POST">
+                            <form action="AltaPaciente?tip=1&&id=${dato.getId()}" method="POST">
                                 <input type="submit" value="Dar de Alta" class="btn btn-primary">
                             </form>
                         </td>

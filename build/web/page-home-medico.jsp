@@ -18,7 +18,7 @@
         
         <div id="menu" >
     <ul class="menu2">
-        <li><a href="HomeMedico">Empleados</a></li>
+        <li><a href="HomeMedico">Operacion</a></li>
 
         <li><a href="CloseSesion" >Cerrar Sesion</a></li>       
     </ul>

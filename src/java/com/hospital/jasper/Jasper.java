@@ -3,8 +3,11 @@ package com.hospital.jasper;
 
 import com.hospital.conexiones.Conexion;
 import static com.mysql.cj.jdbc.admin.TimezoneDump.main;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -53,6 +56,17 @@ public class Jasper extends Conexion{
         } catch ( JRException ex) {
             ex.printStackTrace();
         }
+                try {
+                    File objetFile = new File("Reporte1.pdf");
+                    Desktop.getDesktop().open(objetFile);
+                    
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+        
+        
+        
         desconectar();
         
     }

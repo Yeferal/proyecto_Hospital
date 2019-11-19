@@ -38,7 +38,7 @@ public class ListaRecepcion extends Conexion{
         conectar();
         try {
             stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"tipo='Enfermeria';");
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+empleado+WHERE+"tipo='Enfermeria' AND alta=0;");
             while (resultado.next()) {                
                 u = new Usuario(resultado.getString(2),"");                
                 u.setId(resultado.getInt(1));
@@ -57,7 +57,7 @@ public class ListaRecepcion extends Conexion{
         conectar();
         try {
             stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"* "+FROM+paciente+";");
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+paciente+"WHERE alta=0;");
             while (resultado.next()) { 
                 p = new Paciente(resultado.getInt(5), resultado.getInt(6), resultado.getString(2), resultado.getString(3), resultado.getString(4),resultado.getString(7));
                 p.setId(resultado.getInt(1));
