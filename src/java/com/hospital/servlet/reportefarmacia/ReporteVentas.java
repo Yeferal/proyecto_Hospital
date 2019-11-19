@@ -65,11 +65,18 @@ public class ReporteVentas extends HttpServlet {
             request.setAttribute("datos", reporte.listarReporteVentasCUI(texto));
         }
         
-        request.setAttribute("texh", texto);
+        if(request.getParameter("tip")==null){
+            request.setAttribute("texh", texto);
         
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-reporte3-farmacia.jsp");
         dispatcher.forward(request, response);
+        }else{
+            
+        }
+        
+        
+        
     }
 
 

@@ -1,0 +1,31 @@
+SMAP
+page_002dreporte1_002dfarmacia_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-reporte1-farmacia.jsp
+page-reporte1-farmacia.jsp
++ 1 header.html
+header.html
++ 2 navegacion-reportes-farmacia.html
+navegacion/navegacion-reportes-farmacia.html
+*L
+5,10:63
+1#1,8:73
+14#0,5:80
+1#2,8:85
+18#0,4:93
+22:97,3
+23,25:100
+47:152,11
+48:163
+48:217,8
+49,2:225
+50,3:166
+52:245,8
+53,2:253
+54,2:171
+56,6:173,3
+62,2:191
+63,8:127
+*E

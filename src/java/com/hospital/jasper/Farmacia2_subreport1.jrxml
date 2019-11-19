@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Farmacia2_subreport1" language="groovy" pageWidth="752" pageHeight="572" orientation="Landscape" columnWidth="752" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c9f54a97-7e0c-4b96-bf10-f6849767c599">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[aG9zcGl0YWwudmVudGFfbWVkaWNhbWVudG8gLDE1LDE1LGJhN2RkY2QzLWE5YTUtNDk1OS1iMGEz
+LWIxN2Q2NTJmMTk2Nztob3NwaXRhbC5tZWRpY2FtZW50byBBUyAsNDM3LDE1MSxiMTA3ZDlkOC01
+Zjk5LTRjYTItYjBiYS1jYmYwY2VmZDFlZTc7]]>
+	</property>
+	<queryString>
+		<![CDATA[SELECT hospital.venta_medicamento.id_factura,
+	hospital.venta_medicamento.id,
+	hospital.venta_medicamento.nombre_empleado,
+	hospital.venta_medicamento.nombre_cliente,
+	hospital.venta_medicamento.nombre_medicamento,
+	hospital.venta_medicamento.fecha,
+	hospital.venta_medicamento.precio,
+	hospital.venta_medicamento.cantidad,
+	hospital.venta_medicamento.total,
+	hospital.medicamento.costo
+FROM hospital.venta_medicamento
+	INNER JOIN hospital.medicamento ON 
+	 hospital.venta_medicamento.nombre_medicamento = hospital.medicamento.nombre]]>
+	</queryString>
+	<field name="id_factura" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="id_factura"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="nombre_empleado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre_empleado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="nombre_cliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="nombre_medicamento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre_medicamento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="precio" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venta_medicamento"/>
+	</field>
+	<field name="costo" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="costo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medicamento"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="75" y="9" width="100" height="20" uuid="dd77794b-ebcc-4633-b078-03f7b05a11c3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Ganancia]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="5" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="75" y="0" width="76" height="20" uuid="b3e9471f-1a67-4597-a7ad-a5bb78b51b40"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="0" width="91" height="20" uuid="916136d8-c257-41bf-803f-5aa5ed22cbb1"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="0" width="100" height="20" uuid="4e27d7e2-00eb-4fb8-acb7-3c7284724a75"/>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="0" width="100" height="20" uuid="4028e89e-f87f-4cf1-a9c1-587629dd8a46"/>
+				<text><![CDATA[Ganancia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="75" y="0" width="87" height="20" uuid="69c5fee3-3375-4bf7-9c53-19c89e5ec49f"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="0" width="100" height="20" uuid="aef51da4-8896-4842-8d3b-7f61e2bf0729"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="0" width="100" height="20" uuid="d44dad9a-8080-4e25-ba84-8eae865d83d8"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="0" width="100" height="20" uuid="8d986fc5-6d0c-4552-8fed-b72ab2d5d37b"/>
+				<textFieldExpression><![CDATA[$F{cantidad}*$F{precio}-$F{costo}*$F{cantidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

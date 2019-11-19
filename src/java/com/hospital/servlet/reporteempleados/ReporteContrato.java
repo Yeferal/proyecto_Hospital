@@ -63,6 +63,7 @@ public class ReporteContrato extends HttpServlet {
         request.setAttribute("fech2", request.getParameter("fecha1"));
         request.setAttribute("fech1", request.getParameter("fecha2"));
         request.setAttribute("texh", texto);
+        request.setAttribute("area", texto);
         
         request.setAttribute("objetoarea", listas.listarAreas());
         request.setAttribute("datos", reporte.listarEmpleados(texto, fecha1, fecha2));

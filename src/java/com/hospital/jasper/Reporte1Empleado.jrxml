@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="82cb2692-1c4b-41b7-8d4a-3ed22ad26055">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="0" width="429" height="46" uuid="1979e79d-aab3-4977-b75b-8ea124333de5"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte Contratos Empleados]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="226" y="0" width="100" height="20" uuid="a0927b8b-a71c-4a25-a055-d8ad11037795"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="20" uuid="ca0391ae-8a6d-4d20-a6ae-4a76216d7805"/>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="140" height="20" uuid="3642858e-76a9-48af-9436-6182bf544add"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="67" height="20" uuid="ae208163-d500-46c2-828b-9382d210bdf8"/>
+				<text><![CDATA[Cui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="0" width="69" height="20" uuid="73ae7b03-5538-4b35-b649-f42b2d05912a"/>
+				<text><![CDATA[Salario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="0" width="67" height="20" uuid="3d67939f-a235-4565-a719-d08fbb2e40e2"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="0" width="71" height="20" uuid="7d9aae36-367e-4fec-b4bc-50c414874837"/>
+				<text><![CDATA[Area]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="0" width="86" height="20" uuid="27baa6b2-de78-4317-9b2e-1469963694dc"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="60" height="20" uuid="767f5b13-58c6-4db5-a9b6-6c91202c806e"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="20" width="140" height="20" uuid="6d526799-f848-4401-82f7-24510baaef41"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="50" width="555" height="1" uuid="9d7fc9f6-5d58-4813-a9dd-4342bc52cfb2"/>
+			</break>
+			<textField>
+				<reportElement x="200" y="20" width="67" height="20" uuid="103626e2-fd8e-4a05-ab91-16b3aeb8c404"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="20" width="69" height="20" uuid="1d575d0e-b646-4ed3-96ad-ac36a607c8ad"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="20" width="67" height="20" uuid="9fa1130f-9e37-4ca0-bba6-5395a0067330"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="20" width="71" height="20" uuid="976da7c0-66a4-4d52-af04-bed674087d7f"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="20" width="81" height="20" uuid="f411ee67-ef55-40de-b548-0190ecca39b2"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

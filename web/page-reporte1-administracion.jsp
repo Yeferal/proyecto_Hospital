@@ -17,24 +17,26 @@
     <body>
         <%@include file="navegacion/navegacion-reporte-administracion.html" %>
         <br>
-        <form action="" method="POST">
+        <form action="ReporteIngresoAdministracion" method="POST">
             
             <label for="recipient-name" class="col-form-label" >Fecha minima:</label>
-            <input type="date" name="fecha2"  value="${fech1}" height="100px" width="100px">
+            <input type="date" name="fecha1"  value="${fech1}" height="100px" width="100px">
             
             <label for="recipient-name" class="col-form-label" >Fecha Maxima:</label>
-            <input type="date" name="fecha1" value="${fech2}"  height="100px" width="100px">
+            <input type="date" name="fecha2" value="${fech2}"  height="100px" width="100px">
             
             <input type="submit" value="Filtrar">
         </form>
         <br>
+        <c:set var="farmacia" value="${datos1}" ></c:set>
+        <c:set var="consulta" value="${datos2}" ></c:set>
         <h1>Repote de Ingresos</h1>
         <table border="1">
             <thead>
             </thead>
             <tbody>
-                <td>Repote de Ingresos</td>
-                    <td>TOTAL: Q 20000</td>
+                <td>Reporte de Ingresos</td>
+                    <td>TOTAL: Q ${farmacia.getSubTotal()+consulta.getSubTotal()}</td>
             </tbody>
         </table>
 
@@ -46,37 +48,19 @@
             <tbody>
             <td>Area Farmacia</td>
                     <td></td>
-                    <td>SUBTOTAL: Q  </td>
-                <c:forEach var="dato" items="${datos}">
+                    <td>SUBTOTAL: Q ${farmacia.getSubTotal()}</td>
+                <c:forEach var="dato1" items="${farmacia.getVenta()}">
                     
                 <tr>
                     
-                    <td>${dato.getId()}</td>
-                    <td>${dato.getNombre()}</td>
-                    <td>${dato.getCui()}</td>
+                    <td>${dato1.getFecha()}</td>
+                    <td>${dato1.getNombreMedicamento()}</td>
+                    <td>${dato1.getTotal()}</td>
                 </tr>
                 </c:forEach>
             </tbody>
         </table>
-        <table border="1">
-            <thead>
-
-            </thead>
-            <tbody>
-            <td>Area Farmacia</td>
-                    <td></td>
-                    <td>SUBTOTAL: Q  </td>
-                <c:forEach var="dato" items="${datos}">
-                    
-                <tr>
-                    
-                    <td>${dato.getId()}</td>
-                    <td>${dato.getNombre()}</td>
-                    <td>${dato.getCui()}</td>
-                </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                <br>
         <table border="1">
             <thead>
 
@@ -84,17 +68,18 @@
             <tbody>
             <td>Area Consulta</td>
                     <td></td>
-                    <td>SUBTOTAL: Q  </td>
-                <c:forEach var="dato" items="${datos}">
+                    <td>SUBTOTAL: Q  ${consulta.getSubTotal()}</td>
+                <c:forEach var="dato2" items="${consulta.getConsulta()}">
                     
                 <tr>
                     
-                    <td>${dato.getId()}</td>
-                    <td>${dato.getNombre()}</td>
-                    <td>${dato.getCui()}</td>
+                    <td>${dato2.getFecha()}</td>
+                    <td>${dato2.getNombrePaciente()}</td>
+                    <td>${dato2.getCuota()}</td>
                 </tr>
                 </c:forEach>
             </tbody>
         </table>
+       
     </body>
 </html>

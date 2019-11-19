@@ -28,6 +28,11 @@
             <input type="submit" value="Filtrar">
         </form>
         <br>
+            <form action="ExportaEmpleado?tip=3&&opcion=${opti}" method="POST">
+            
+            <input type="submit" value="Exportar">
+        </form>
+            <br>
         <h1>Reporte de Contratos</h1>
         
         <table>

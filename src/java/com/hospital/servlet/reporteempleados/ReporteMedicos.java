@@ -27,6 +27,7 @@ public class ReporteMedicos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        request.setAttribute("opti", 0);
         request.setAttribute("datos", reporte.listarEmpleadosMedicosAsignados());
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-reporte3-empleados.jsp");
         dispatcher.forward(request, response);

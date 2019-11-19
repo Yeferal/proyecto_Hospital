@@ -18,6 +18,7 @@ public class ListaReporteEmpleados extends Conexion{
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery("SELECT * FROM historia_laboral WHERE tipo_historial='Contrato' AND (fecha_registro<="+fecha1+") AND (fecha_registro>="+fecha2+") AND (area_trabajo LIKE '%"+texto+"%') ORDER BY fecha_registro;");
+            System.out.println("SELECT * FROM historia_laboral WHERE tipo_historial='Contrato' AND (fecha_registro<="+fecha1+") AND (fecha_registro>="+fecha2+") AND (area_trabajo LIKE '%"+texto+"%') ORDER BY fecha_registro;");
             while (resultado.next()) {                
                 c = new Contrato(resultado.getString(2), resultado.getString(3),resultado.getDouble(4),resultado.getString(5),resultado.getString(6),resultado.getString(7));
                 c.setId(resultado.getInt(1));
@@ -39,7 +40,7 @@ public class ListaReporteEmpleados extends Conexion{
         conectar();
         try {
             stmt = conect.createStatement();
-            resultado = stmt.executeQuery("SELECT * FROM historia_laboral WHERE tipo_historial='Despido' AND tipo_historial='Renuncia' AND (fecha_registro<="+fecha1+") AND (fecha_registro>="+fecha2+") AND (area_trabajo LIKE '%"+texto+"%') ORDER BY fecha_registro;");
+            resultado = stmt.executeQuery("SELECT * FROM historia_laboral WHERE tipo_historial='Despido' OR tipo_historial='Renuncia' AND (fecha_registro<="+fecha1+") AND (fecha_registro>="+fecha2+") AND (area_trabajo LIKE '%"+texto+"%') ORDER BY fecha_registro;");
             while (resultado.next()) {                
                 c = new Contrato(resultado.getString(2), resultado.getString(3),resultado.getDouble(4),resultado.getString(5),resultado.getString(6),resultado.getString(7));
                 c.setId(resultado.getInt(1));

@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ReporteGanaciaFarmacia extends HttpServlet {
 
     ListaReporte reporte = new ListaReporte();
+    ImprimeReporte imprime =  new ImprimeReporte();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,7 +37,7 @@ public class ReporteGanaciaFarmacia extends HttpServlet {
         request.setAttribute("fec1", fecha1);
         request.setAttribute("fec2", fecha2);
         
-        
+//        imprime.imprimir1(reporte.listarReporteGanancia(texto, fecha1, fecha2));
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-reporte2-farmacia.jsp");
         dispatcher.forward(request, response);
     }
@@ -70,6 +71,9 @@ public class ReporteGanaciaFarmacia extends HttpServlet {
         request.setAttribute("fech2", request.getParameter("fecha1"));
         request.setAttribute("fech1", request.getParameter("fecha2"));
         request.setAttribute("texh", texto);
+        
+//        imprime.imprimir1(reporte.listarReporteGanancia(texto, fecha1, fecha2));
+        
         
         request.setAttribute("datos", reporte.listarReporteGanancia(texto, fecha1, fecha2));
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-reporte2-farmacia.jsp");

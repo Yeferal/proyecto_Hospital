@@ -1,0 +1,37 @@
+SMAP
+page_002dreporte1_002dadministracion_jsp.java
+JSP
+*S JSP
+*F
++ 0 page-reporte1-administracion.jsp
+page-reporte1-administracion.jsp
++ 1 header.html
+header.html
++ 2 navegacion-reporte-administracion.html
+navegacion/navegacion-reporte-administracion.html
+*L
+5,10:60
+1#1,8:70
+14#0,5:77
+1#2,8:82
+18#0,5:89
+23:94,3
+24,2:97
+26:99,3
+27,24:102
+50:179,11
+51,3:190
+54,3:193,3
+57,2:202
+58,12:128
+69:228,11
+70,3:239
+73,3:242,3
+76,2:251
+77,12:142
+88:277,11
+89,3:288
+92,3:291,3
+95,2:300
+96,6:156
+*E

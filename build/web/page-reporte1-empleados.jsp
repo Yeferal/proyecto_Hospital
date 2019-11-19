@@ -35,6 +35,11 @@
             <input type="submit" value="Filtrar">
         </form>
         <br>
+            <form action="ExportaEmpleado?tip=1&&area=${texh}&&fecha1=${fech1}&&fecha2=${fech2}" method="POST">
+            
+            <input type="submit" value="Exportar">
+        </form>
+                    <br>
         <h1>Reporte de Contratos</h1>
         
         <table>

@@ -23,6 +23,11 @@
             
             <input type="submit" value="Filtrar">
         </form>
+            <br>
+            <form action="ReporteMedicamentoFarmacia?tip=1&&texto=${texto}" method="POST">
+            
+            <input type="submit" value="Exportar">
+        </form>
         <br>
         <h1>Reporte de Medicamentos</h1>
         

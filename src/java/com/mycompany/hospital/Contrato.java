@@ -51,7 +51,9 @@ public class Contrato {
     public String getFecha(){
         return fecha;
     }
-    
+    public String getfecha_registro(){
+        return fecha;
+    }
     
     public int getId(){
         return id;
@@ -64,6 +66,12 @@ public class Contrato {
     public String getCui(){
         return cui;
     }
+    public String getcui_empleado(){
+        return cui;
+    }
+    public double getsalario_empleado(){
+        return salario;
+    }
     
     
     public double getSalario(){
@@ -74,11 +82,20 @@ public class Contrato {
     public String getTipo(){
         return tipo;
     }
+    public String getarea_trabajo(){
+        return tipo;
+    }
+    public String gettipo_historial(){
+        return registro;
+    }
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     public void setRegistro(String registro){
         this.registro = registro;
+    }
+    public String getEmpleado(){
+        return nombre;
     }
 }
